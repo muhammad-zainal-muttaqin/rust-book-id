@@ -53,8 +53,29 @@ def main() -> int:
         fh.write("User-agent: *\nAllow: /\n\n")
         fh.write(f"Sitemap: {base}sitemap.xml\n")
 
+    # Canonical + og:url disuntikkan ke HTML hasil build (mdBook tidak menyediakannya).
+    injected = 0
+    for p in glob.glob(os.path.join(BOOK, "**", "*.html"), recursive=True):
+        rel = os.path.relpath(p, BOOK).replace(os.sep, "/")
+        if rel in {"404.html", "print.html"} or rel.startswith("searchindex"):
+            continue
+        url = base + ("" if rel == "index.html" else rel)
+        raw = open(p, encoding="utf-8").read()
+        lines = [ln for ln in raw.split("\n")
+                 if 'rel="canonical"' not in ln and 'property="og:url"' not in ln]
+        try:
+            i = next(j for j, line in enumerate(lines) if line.strip() == "<head>") + 1
+        except StopIteration:
+            continue
+        lines[i:i] = [
+            f'        <link rel="canonical" href="{url}">',
+            f'        <meta property="og:url" content="{url}">',
+        ]
+        open(p, "w", encoding="utf-8").write("\n".join(lines))
+        injected += 1
+
     print(f"{len(pages)} URL ditulis ke src/sitemap.xml dan src/robots.txt")
-    print("Jalankan: mdbook build")
+    print(f"Canonical/og:url disuntikkan ke {injected} halaman HTML")
     return 0
 
 

@@ -192,6 +192,15 @@ def main() -> int:
             path, sep, frag = href.partition("#")
             if path.lower().endswith((".css", ".js", ".png", ".jpg", ".svg", ".ico", ".gif")):
                 continue
+            site_url = ""
+            cfg = os.path.join(HERE, "book.toml")
+            if os.path.exists(cfg):
+                m = re.search(r'^site-url\s*=\s*"([^"]+)"', read(cfg), re.M)
+                if m:
+                    site_url = m.group(1).rstrip("/")
+            if site_url and path.startswith(site_url):
+                # Tautan root-relative untuk GitHub Pages, valid saat di-deploy.
+                continue
             target = os.path.normpath(os.path.join(os.path.dirname(p), path)) if path else p
             if not os.path.exists(target):
                 broken_file.append((os.path.relpath(p, BOOK), href))

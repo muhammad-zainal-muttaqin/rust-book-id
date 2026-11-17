@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://muhammad-zainal-muttaqin.github.io/rust-book-id/sitemap.xml
