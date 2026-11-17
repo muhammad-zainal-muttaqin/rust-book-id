@@ -10,7 +10,7 @@ additional-css = ["ferris.css", "theme/2018-edition.css", "theme/semantic-notes.
 additional-js = ["ferris.js"]
 git-repository-url = "https://github.com/muhammad-zainal-muttaqin/rust-book-id"
 git-repository-icon = "fab-github"
-edit-url-template = "https://github.com/muhammad-zainal-muttaqin/rust-book-id/edit/main/src/{path}"
+edit-url-template = "https://github.com/muhammad-zainal-muttaqin/rust-book-id/edit/main/{path}"
 site-url = "/"
 
 [output.html.search]
