@@ -1,6 +1,7 @@
 [book]
 title = "Bahasa Pemrograman Rust"
 authors = ["Steve Klabnik", "Carol Nichols", "Chris Krycho", "Kontribusi dari Komunitas Rust"]
+description = "Terjemahan bahasa Indonesia dari The Rust Programming Language: panduan lengkap Rust, dari dasar, ownership, struct dan enum, hingga trait, async/await, konkurensi, dan proyek web server."
 src = "src"
 language = "id"
 

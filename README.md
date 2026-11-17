@@ -39,3 +39,25 @@ python3 sync-check.py --refresh  # tandai baseline baru setelah sumber diperbaru
 ```
 
 Aturan gaya dan glosarium ada di `TRANSLATION-RULES.md`.
+
+## SEO / metadata
+
+`book.toml` sudah berisi judul, deskripsi, dan `lang = "id"`. Template
+`theme/head.hbs` menambahkan tag Open Graph dan Twitter Card untuk pratinjau
+saat tautan dibagikan.
+
+Setelah URL publik diketahui, hasilkan `robots.txt` dan `sitemap.xml`:
+
+```bash
+python3 generate-seo.py https://USERNAME.github.io/rust-book-id/
+mdbook build
+```
+
+## Lisensi dan atribusi
+
+Terjemahan ini merupakan karya turunan dari *The Rust Programming Language*
+oleh Steve Klabnik, Carol Nichols, Chris Krycho, dan komunitas Rust, yang
+dirilis di bawah lisensi ganda **MIT** atau **Apache-2.0**. Lisensi asli
+disertakan sebagai `LICENSE-MIT` dan `LICENSE-APACHE`. Terjemahan ini
+dididistribusikan dengan ketentuan lisensi yang sama, dengan tetap menjaga
+atribusi kepada penulis dan proyek aslinya.
