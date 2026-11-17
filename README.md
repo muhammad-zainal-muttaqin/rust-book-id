@@ -50,7 +50,7 @@ saat tautan dibagikan.
 Setelah URL publik diketahui, hasilkan `robots.txt` dan `sitemap.xml`:
 
 ```bash
-python3 generate-seo.py https://USERNAME.github.io/rust-book-id/
+python3 generate-seo.py https://rust-book-id.pages.dev/
 mdbook build
 ```
 
