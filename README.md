@@ -5,8 +5,9 @@ commit `2771df1`, 2026-10-28) dalam bahasa Indonesia.
 
 ## Membaca
 
-Buka `book/index.html` di browser. Seluruh bab, lampiran, prakata, dan title
-page sudah diterjemahkan (112 file Markdown, 137 halaman HTML).
+Buka `docs/index.html` di browser (folder ini juga yang disajikan GitHub Pages).
+Seluruh bab, lampiran, prakata, dan title page sudah diterjemahkan (112 file
+Markdown, 137 halaman HTML).
 
 ## Build ulang
 

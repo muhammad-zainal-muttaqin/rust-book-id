@@ -20,7 +20,7 @@ from collections import Counter
 HERE = os.path.dirname(os.path.abspath(__file__))
 EN = sys.argv[1] if len(sys.argv) > 1 else os.path.expanduser("~/Developer/rust/rust-book-id/src")
 ID = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, "src")
-BOOK = sys.argv[3] if len(sys.argv) > 3 else os.path.join(HERE, "book")
+BOOK = sys.argv[3] if len(sys.argv) > 3 else os.path.join(HERE, "docs")
 
 FENCE = re.compile(r"(?ms)^(```+|~~~+)([^\n]*)\n(.*?)^\1\s*$")
 HEAD = re.compile(r"(?m)^(#{1,6})\s+(.*)$")

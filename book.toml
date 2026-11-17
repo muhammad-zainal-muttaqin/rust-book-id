@@ -52,5 +52,5 @@ output-mode = "default"
 edition = "2024"
 
 [build]
-build-dir = "book"
+build-dir = "docs"
 extra-watch-dirs = ["packages/mdbook-trpl"]

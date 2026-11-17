@@ -15,7 +15,7 @@ import sys
 from datetime import datetime, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-BOOK = os.path.join(HERE, "book")
+BOOK = os.path.join(HERE, "docs")
 SRC = os.path.join(HERE, "src")
 
 
