@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import glob
 import os
+import shutil
 import sys
 from datetime import datetime, timezone
 
@@ -52,6 +53,10 @@ def main() -> int:
     with open(os.path.join(SRC, "robots.txt"), "w", encoding="utf-8") as fh:
         fh.write("User-agent: *\nAllow: /\n\n")
         fh.write(f"Sitemap: {base}sitemap.xml\n")
+
+    # Salin langsung ke output agar tidak menunggu build ulang.
+    for filename in ("sitemap.xml", "robots.txt"):
+        shutil.copy2(os.path.join(SRC, filename), os.path.join(BOOK, filename))
 
     # Canonical + og:url disuntikkan ke HTML hasil build (mdBook tidak menyediakannya).
     injected = 0
