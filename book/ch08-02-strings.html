@@ -1,0 +1,651 @@
+<!DOCTYPE HTML>
+<html lang="id" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Menyimpan Teks Berenkode UTF-8 dengan String - Bahasa Pemrograman Rust</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-e96d0476.css">
+        <link rel="stylesheet" href="css/chrome-d279d366.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="ferris-d33b75bf.css">
+        <link rel="stylesheet" href="theme/2018-edition-4e126c62.css">
+        <link rel="stylesheet" href="theme/semantic-notes-9b5766c0.css">
+        <link rel="stylesheet" href="theme/listing-cab26221.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-d171f728.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-632b8c09.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Bahasa Pemrograman Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <p><a id="storing-utf-8-encoded-text-with-strings"></a></p>
+<h2 id="menyimpan-teks-terkode-utf-8-dengan-string"><a class="header" href="#menyimpan-teks-terkode-utf-8-dengan-string">Menyimpan Teks Terkode UTF-8 dengan String</a></h2>
+<p>Kita sudah membahas string di Bab 4, tapi sekarang kita akan mempelajarinya
+lebih dalam. Pemula Rust (Rustacean baru) sering tersandung pada string karena
+tiga alasan sekaligus: kecenderungan Rust untuk menampilkan kemungkinan error,
+string sebagai struktur data yang lebih rumit daripada yang disangka banyak
+programmer, dan UTF-8. Kombinasi faktor ini bisa terasa sulit ketika kamu datang
+dari bahasa pemrograman lain.</p>
+<p>Kita membahas string dalam konteks koleksi karena string diimplementasikan
+sebagai sekumpulan byte, ditambah beberapa method yang memberi perilaku berguna
+ketika byte-byte itu ditafsirkan sebagai teks. Di bagian ini, kita akan
+membahas operasi pada <code>String</code> yang dimiliki setiap tipe koleksi, seperti
+membuat, memperbarui, dan membaca. Kita juga akan membahas perbedaan <code>String</code>
+dari koleksi lainnya, yaitu bagaimana pengindeksan pada <code>String</code> menjadi rumit
+karena perbedaan cara manusia dan komputer menafsirkan data <code>String</code>.</p>
+<!-- Old headings. Do not remove or links may break. -->
+<p><a id="what-is-a-string"></a></p>
+<h3 id="mendefinisikan-string"><a class="header" href="#mendefinisikan-string">Mendefinisikan String</a></h3>
+<p>Pertama, kita definisikan maksud istilah <em>string</em>. Rust hanya punya satu tipe
+string di bahasa inti, yaitu string slice <code>str</code> yang biasanya muncul dalam
+bentuk pinjaman, <code>&amp;str</code>. Di Bab 4, kita membahas string slice, yaitu reference
+ke data string terkode UTF-8 yang disimpan di tempat lain. Literal string,
+misalnya, disimpan dalam binary program sehingga merupakan string slice.</p>
+<p>Tipe <code>String</code>, yang disediakan oleh standard library Rust dan bukan bagian dari
+bahasa inti, adalah tipe string yang bisa tumbuh, mutable, owned, dan terkode
+UTF-8. Ketika Rustacean menyebut “string” di Rust, mereka mungkin merujuk pada
+tipe <code>String</code> maupun string slice <code>&amp;str</code>, bukan hanya salah satunya. Meski
+bagian ini sebagian besar membahas <code>String</code>, kedua tipe itu sama-sama banyak
+digunakan di standard library Rust, dan <code>String</code> serta string slice sama-sama
+terkode UTF-8.</p>
+<h3 id="membuat-string-baru"><a class="header" href="#membuat-string-baru">Membuat String Baru</a></h3>
+<p>Banyak operasi yang tersedia pada <code>Vec&lt;T&gt;</code> juga tersedia pada <code>String</code>, karena
+<code>String</code> sebenarnya diimplementasikan sebagai pembungkus di sekitar vector byte
+dengan sejumlah jaminan, batasan, dan kemampuan tambahan. Contoh fungsi yang
+berperilaku sama pada <code>Vec&lt;T&gt;</code> dan <code>String</code> adalah fungsi <code>new</code> untuk membuat
+instance, seperti ditunjukkan Listing 8-11.</p>
+<figure class="listing" id="listing-8-11">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let mut s = String::new();
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-8-11">Listing 8-11</a>: Creating a new, empty <code>String</code></figcaption>
+</figure>
+<p>Baris ini membuat string kosong baru bernama <code>s</code>, yang selanjutnya bisa kita
+isi dengan data. Sering kali kita punya data awal yang ingin dipakai untuk
+memulai string. Untuk itu, kita memakai method <code>to_string</code>, yang tersedia pada
+tipe mana pun yang mengimplementasikan trait <code>Display</code>, seperti halnya literal
+string. Listing 8-12 menunjukkan dua contoh.</p>
+<figure class="listing" id="listing-8-12">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let data = "initial contents";
+
+    let s = data.to_string();
+
+    // The method also works on a literal directly:
+    let s = "initial contents".to_string();
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-8-12">Listing 8-12</a>: Using the <code>to_string</code> method to create a <code>String</code> from a string literal</figcaption>
+</figure>
+<p>Kode ini membuat string yang berisi <code>initial contents</code>.</p>
+<p>Kita juga bisa memakai fungsi <code>String::from</code> untuk membuat <code>String</code> dari
+literal string. Kode di Listing 8-13 setara dengan kode di Listing 8-12 yang
+memakai <code>to_string</code>.</p>
+<figure class="listing" id="listing-8-13">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let s = String::from("initial contents");
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-8-13">Listing 8-13</a>: Using the <code>String::from</code> function to create a <code>String</code> from a string literal</figcaption>
+</figure>
+<p>Karena string dipakai untuk banyak hal, kita bisa memakai berbagai API generik
+untuk string, sehingga kita punya banyak pilihan. Beberapa di antaranya terlihat
+redundan, tapi semuanya punya tempat! Dalam kasus ini, <code>String::from</code> dan
+<code>to_string</code> melakukan hal yang sama, jadi mana yang kamu pilih hanya soal gaya
+dan keterbacaan.</p>
+<p>Ingat bahwa string terkode UTF-8, sehingga kita bisa memasukkan data apa pun
+yang terkode dengan benar ke dalamnya, seperti ditunjukkan Listing 8-14.</p>
+<figure class="listing" id="listing-8-14">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let hello = String::from("السلام عليكم");
+    let hello = String::from("Dobrý den");
+    let hello = String::from("Hello");
+    let hello = String::from("שלום");
+    let hello = String::from("नमस्ते");
+    let hello = String::from("こんにちは");
+    let hello = String::from("안녕하세요");
+    let hello = String::from("你好");
+    let hello = String::from("Olá");
+    let hello = String::from("Здравствуйте");
+    let hello = String::from("Hola");
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-8-14">Listing 8-14</a>: Storing greetings in different languages in strings</figcaption>
+</figure>
+<p>Semua ini adalah nilai <code>String</code> yang valid.</p>
+<h3 id="memperbarui-string"><a class="header" href="#memperbarui-string">Memperbarui String</a></h3>
+<p><code>String</code> bisa bertambah ukurannya dan isinya bisa berubah, sama seperti isi
+<code>Vec&lt;T&gt;</code>, jika kamu menambahkan lebih banyak data ke dalamnya. Selain itu, kamu
+bisa dengan nyaman memakai operator <code>+</code> atau macro <code>format!</code> untuk menggabungkan
+nilai <code>String</code>.</p>
+<!-- Old headings. Do not remove or links may break. -->
+<p><a id="appending-to-a-string-with-push_str-and-push"></a></p>
+<h4 id="menambahkan-dengan-push_str-atau-push"><a class="header" href="#menambahkan-dengan-push_str-atau-push">Menambahkan dengan <code>push_str</code> atau <code>push</code></a></h4>
+<p>Kita bisa menumbuhkan <code>String</code> dengan memakai method <code>push_str</code> untuk menambahkan
+string slice, seperti ditunjukkan Listing 8-15.</p>
+<figure class="listing" id="listing-8-15">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let mut s = String::from("foo");
+    s.push_str("bar");
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-8-15">Listing 8-15</a>: Appending a string slice to a <code>String</code> using the <code>push_str</code> method</figcaption>
+</figure>
+<p>Setelah dua baris ini, <code>s</code> akan berisi <code>foobar</code>. Method <code>push_str</code> menerima
+string slice karena kita tidak selalu ingin mengambil ownership atas parameter
+tersebut. Sebagai contoh, pada kode di Listing 8-16, kita ingin tetap bisa
+memakai <code>s2</code> setelah isinya ditambahkan ke <code>s1</code>.</p>
+<figure class="listing" id="listing-8-16">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let mut s1 = String::from("foo");
+    let s2 = "bar";
+    s1.push_str(s2);
+    println!("s2 is {s2}");
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-8-16">Listing 8-16</a>: Using a string slice after appending its contents to a <code>String</code></figcaption>
+</figure>
+<p>Jika method <code>push_str</code> mengambil ownership atas <code>s2</code>, kita tidak akan bisa
+mencetak nilainya di baris terakhir. Namun, kode ini bekerja sebagaimana
+diharapkan!</p>
+<p>Method <code>push</code> menerima satu karakter sebagai parameter dan menambahkannya ke
+<code>String</code>. Listing 8-17 menambahkan huruf <em>l</em> ke sebuah <code>String</code> dengan memakai
+method <code>push</code>.</p>
+<figure class="listing" id="listing-8-17">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let mut s = String::from("lo");
+    s.push('l');
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-8-17">Listing 8-17</a>: Adding one character to a <code>String</code> value using <code>push</code></figcaption>
+</figure>
+<p>Hasilnya, <code>s</code> akan berisi <code>lol</code>.</p>
+<!-- Old headings. Do not remove or links may break. -->
+<p><a id="concatenation-with-the--operator-or-the-format-macro"></a></p>
+<p><a id="concatenating-with--or-format"></a></p>
+<h4 id="menggabungkan-dengan--atau-format"><a class="header" href="#menggabungkan-dengan--atau-format">Menggabungkan dengan <code>+</code> atau <code>format!</code></a></h4>
+<p>Sering kali kamu ingin menggabungkan dua string yang sudah ada. Salah satu cara
+melakukannya adalah dengan memakai operator <code>+</code>, seperti ditunjukkan Listing
+8-18.</p>
+<figure class="listing" id="listing-8-18">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let s1 = String::from("Hello, ");
+    let s2 = String::from("world!");
+    let s3 = s1 + &amp;s2; // note s1 has been moved here and can no longer be used
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-8-18">Listing 8-18</a>: Using the <code>+</code> operator to combine two <code>String</code> values into a new <code>String</code> value</figcaption>
+</figure>
+<p>String <code>s3</code> akan berisi <code>Hello, world!</code>. Alasan <code>s1</code> tidak lagi valid setelah
+penjumlahan, dan alasan kita memakai reference ke <code>s2</code>, terkait dengan
+signature method yang dipanggil ketika kita memakai operator <code>+</code>. Operator <code>+</code>
+memakai method <code>add</code>, yang signature-nya kurang lebih seperti ini:</p>
+<pre><code class="language-rust ignore">fn add(self, s: &amp;str) -&gt; String {</code></pre>
+<p>Di standard library, kamu akan melihat <code>add</code> didefinisikan dengan generic dan
+associated type. Di sini kita sudah menggantinya dengan tipe konkret, yang
+sebenarnya terjadi ketika kita memanggil method ini dengan nilai <code>String</code>. Kita
+akan membahas generic di Bab 10. Signature ini memberi kita petunjuk yang kita
+butuhkan untuk memahami bagian rumit dari operator <code>+</code>.</p>
+<p>Pertama, <code>s2</code> punya <code>&amp;</code>, artinya kita menambahkan reference dari string kedua ke
+string pertama. Ini karena parameter <code>s</code> pada fungsi <code>add</code>: kita hanya bisa
+menambahkan string slice ke sebuah <code>String</code>; kita tidak bisa menambahkan dua
+nilai <code>String</code> bersamaan. Tapi tunggu—tipe <code>&amp;s2</code> adalah <code>&amp;String</code>, bukan <code>&amp;str</code>
+sebagaimana ditentukan pada parameter kedua <code>add</code>. Lalu, mengapa Listing 8-18
+bisa mengompilasi?</p>
+<p>Alasan kita bisa memakai <code>&amp;s2</code> dalam panggilan ke <code>add</code> adalah karena compiler
+bisa mengubah argumen <code>&amp;String</code> menjadi <code>&amp;str</code>. Ketika kita memanggil method
+<code>add</code>, Rust memakai deref coercion, yang di sini mengubah <code>&amp;s2</code> menjadi
+<code>&amp;s2[..]</code>. Kita akan membahas deref coercion lebih lanjut di Bab 15. Karena <code>add</code>
+tidak mengambil ownership atas parameter <code>s</code>, <code>s2</code> tetap menjadi <code>String</code> yang
+valid setelah operasi ini.</p>
+<p>Kedua, kita bisa melihat dari signature bahwa <code>add</code> mengambil ownership atas
+<code>self</code> karena <code>self</code> <em>tidak</em> punya <code>&amp;</code>. Artinya <code>s1</code> di Listing 8-18 akan
+di-move ke dalam panggilan <code>add</code> dan tidak lagi valid setelahnya. Jadi, meski
+<code>let s3 = s1 + &amp;s2;</code> terlihat seperti akan menyalin kedua string dan membuat
+string baru, statement ini sebenarnya mengambil ownership atas <code>s1</code>, menambahkan
+salinan isi <code>s2</code>, lalu mengembalikan ownership atas hasilnya. Dengan kata lain,
+terlihat seperti melakukan banyak penyalinan, tapi sebenarnya tidak; implementasinya
+lebih efisien daripada menyalin.</p>
+<p>Jika kita perlu menggabungkan banyak string, perilaku operator <code>+</code> menjadi
+rumit:</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let s1 = String::from("tic");
+    let s2 = String::from("tac");
+    let s3 = String::from("toe");
+
+    let s = s1 + "-" + &amp;s2 + "-" + &amp;s3;
+<span class="boring">}</span></code></pre>
+<p>Pada titik ini, <code>s</code> akan menjadi <code>tic-tac-toe</code>. Dengan semua karakter <code>+</code> dan <code>"</code>
+itu, sulit melihat apa yang sebenarnya terjadi. Untuk menggabungkan string dengan
+cara yang lebih rumit, kita bisa memakai macro <code>format!</code>:</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let s1 = String::from("tic");
+    let s2 = String::from("tac");
+    let s3 = String::from("toe");
+
+    let s = format!("{s1}-{s2}-{s3}");
+<span class="boring">}</span></code></pre>
+<p>Kode ini juga mengatur <code>s</code> menjadi <code>tic-tac-toe</code>. Macro <code>format!</code> bekerja seperti
+<code>println!</code>, tapi alih-alih mencetak keluaran ke layar, ia mengembalikan <code>String</code>
+yang berisi keluaran tersebut. Versi kode yang memakai <code>format!</code> jauh lebih mudah
+dibaca, dan kode yang dihasilkan oleh macro <code>format!</code> memakai reference sehingga
+panggilan ini tidak mengambil ownership atas parameternya.</p>
+<h3 id="mengindeks-string"><a class="header" href="#mengindeks-string">Mengindeks String</a></h3>
+<p>Di banyak bahasa pemrograman lain, mengakses karakter individual dalam sebuah
+string dengan merujuknya lewat indeks adalah operasi yang valid dan umum. Namun,
+jika kamu mencoba mengakses bagian <code>String</code> dengan sintaks indeks di Rust, kamu
+akan mendapatkan error. Perhatikan kode yang tidak valid di Listing 8-19.</p>
+<figure class="listing" id="listing-8-19">
+<pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
+</span>    let s1 = String::from("hi");
+    let h = s1[0];
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-8-19">Listing 8-19</a>: Attempting to use indexing syntax with a <code>String</code></figcaption>
+</figure>
+<p>Kode ini akan menghasilkan error berikut:</p>
+<pre><code class="language-console">$ cargo run
+   Compiling collections v0.1.0 (file:///projects/collections)
+error[E0277]: the type `str` cannot be indexed by `{integer}`
+ --&gt; src/main.rs:3:16
+  |
+3 |     let h = s1[0];
+  |                ^ string indices are ranges of `usize`
+  |
+  = help: the trait `SliceIndex&lt;str&gt;` is not implemented for `{integer}`
+  = note: you can use `.chars().nth()` or `.bytes().nth()`
+          for more information, see chapter 8 in The Book: &lt;https://doc.rust-lang.org/book/ch08-02-strings.html#indexing-into-strings&gt;
+help: `usize` implements trait `SliceIndex&lt;T&gt;`
+ --&gt; /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/slice/index.rs:179:0
+  |
+  = note: `SliceIndex&lt;[T]&gt;`
+ --&gt; /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/bstr/traits.rs:197:0
+  |
+  = note: `SliceIndex&lt;ByteStr&gt;`
+  = note: required for `String` to implement `Index&lt;{integer}&gt;`
+
+For more information about this error, try `rustc --explain E0277`.
+error: could not compile `collections` (bin "collections") due to 1 previous error
+</code></pre>
+<p>Error itu bercerita: string Rust tidak mendukung pengindeksan. Tapi mengapa
+tidak? Untuk menjawab pertanyaan itu, kita perlu membahas bagaimana Rust
+menyimpan string di memori.</p>
+<h4 id="representasi-internal"><a class="header" href="#representasi-internal">Representasi Internal</a></h4>
+<p><code>String</code> adalah pembungkus di atas <code>Vec&lt;u8&gt;</code>. Mari kita lihat beberapa contoh
+string terkode UTF-8 yang benar dari Listing 8-14. Pertama, yang ini:</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span><span class="boring">    let hello = String::from("السلام عليكم");
+</span><span class="boring">    let hello = String::from("Dobrý den");
+</span><span class="boring">    let hello = String::from("Hello");
+</span><span class="boring">    let hello = String::from("שלום");
+</span><span class="boring">    let hello = String::from("नमस्ते");
+</span><span class="boring">    let hello = String::from("こんにちは");
+</span><span class="boring">    let hello = String::from("안녕하세요");
+</span><span class="boring">    let hello = String::from("你好");
+</span><span class="boring">    let hello = String::from("Olá");
+</span><span class="boring">    let hello = String::from("Здравствуйте");
+</span>    let hello = String::from("Hola");
+<span class="boring">}</span></code></pre>
+<p>Dalam kasus ini, <code>len</code> akan menjadi <code>4</code>, yang berarti vector yang menyimpan
+string <code>"Hola"</code> panjangnya 4 byte. Setiap huruf ini memakai 1 byte ketika
+dikodekan dalam UTF-8. Namun, baris berikut mungkin mengejutkanmu (perhatikan
+bahwa string ini dimulai dengan huruf Cyrillic kapital <em>Ze</em>, bukan angka 3):</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span><span class="boring">    let hello = String::from("السلام عليكم");
+</span><span class="boring">    let hello = String::from("Dobrý den");
+</span><span class="boring">    let hello = String::from("Hello");
+</span><span class="boring">    let hello = String::from("שלום");
+</span><span class="boring">    let hello = String::from("नमस्ते");
+</span><span class="boring">    let hello = String::from("こんにちは");
+</span><span class="boring">    let hello = String::from("안녕하세요");
+</span><span class="boring">    let hello = String::from("你好");
+</span><span class="boring">    let hello = String::from("Olá");
+</span>    let hello = String::from("Здравствуйте");
+<span class="boring">    let hello = String::from("Hola");
+</span><span class="boring">}</span></code></pre>
+<p>Jika kamu ditanya berapa panjang string itu, kamu mungkin menjawab 12. Kenyataannya,
+jawaban Rust adalah 24: itulah jumlah byte yang dibutuhkan untuk mengkodekan
+“Здравствуйте” dalam UTF-8, karena setiap Unicode scalar value dalam string itu
+memakan 2 byte penyimpanan. Karena itu, indeks pada byte string tidak selalu
+berkorespondensi dengan Unicode scalar value yang valid. Untuk mendemokannya,
+perhatikan kode Rust yang tidak valid ini:</p>
+<pre><code class="language-rust ignore does_not_compile">let hello = "Здравствуйте";
+let answer = &amp;hello[0];</code></pre>
+<p>Kamu sudah tahu bahwa <code>answer</code> tidak akan menjadi <code>З</code>, huruf pertama. Ketika
+dikodekan dalam UTF-8, byte pertama dari <code>З</code> adalah <code>208</code> dan byte kedua adalah
+<code>151</code>, jadi tampaknya <code>answer</code> seharusnya menjadi <code>208</code>, tapi <code>208</code> bukan
+karakter yang valid dengan sendirinya. Mengembalikan <code>208</code> mungkin bukan yang
+diinginkan pengguna jika mereka meminta huruf pertama string ini; namun, itu
+adalah satu-satunya data yang dimiliki Rust pada indeks byte 0. Pengguna umumnya
+tidak ingin nilai byte yang dikembalikan, bahkan jika string hanya berisi huruf
+Latin: Jika <code>&amp;"hi"[0]</code> adalah kode valid yang mengembalikan nilai byte, kode itu
+akan mengembalikan <code>104</code>, bukan <code>h</code>.</p>
+<p>Jawabannya, untuk menghindari pengembalian nilai yang tidak terduga dan mencegah
+bug yang mungkin tidak langsung ditemukan, Rust tidak mengompilasi kode ini
+sama sekali dan mencegah kesalahpahaman sedini mungkin dalam proses pengembangan.</p>
+<!-- Old headings. Do not remove or links may break. -->
+<p><a id="bytes-and-scalar-values-and-grapheme-clusters-oh-my"></a></p>
+<h4 id="byte-scalar-value-dan-grapheme-cluster"><a class="header" href="#byte-scalar-value-dan-grapheme-cluster">Byte, Scalar Value, dan Grapheme Cluster</a></h4>
+<p>Poin lain tentang UTF-8 adalah sebenarnya ada tiga cara relevan untuk melihat
+string dari sudut pandang Rust: sebagai byte, scalar value, dan grapheme cluster
+(yang paling mendekati apa yang kita sebut <em>huruf</em>).</p>
+<p>Jika kita melihat kata Hindi “नमस्ते” yang ditulis dengan aksara Devanagari,
+kata itu disimpan sebagai vector nilai <code>u8</code> yang tampak seperti ini:</p>
+<pre><code class="language-text">[224, 164, 168, 224, 164, 174, 224, 164, 184, 224, 165, 141, 224, 164, 164,
+224, 165, 135]
+</code></pre>
+<p>Itu 18 byte dan itulah cara komputer pada akhirnya menyimpan data ini. Jika kita
+melihatnya sebagai Unicode scalar value, yaitu tipe <code>char</code> milik Rust, byte-byte
+tersebut tampak seperti ini:</p>
+<pre><code class="language-text">['न', 'म', 'स', '्', 'त', 'े']
+</code></pre>
+<p>Ada enam nilai <code>char</code> di sini, tapi yang keempat dan keenam bukan huruf: keduanya
+diakritik yang tidak bermakna sendirian. Terakhir, jika kita melihatnya sebagai
+grapheme cluster, kita akan mendapat apa yang disebut orang sebagai empat huruf
+penyusun kata Hindi:</p>
+<pre><code class="language-text">["न", "म", "स्", "ते"]
+</code></pre>
+<p>Rust menyediakan cara-cara berbeda untuk menafsirkan data string mentah yang
+disimpan komputer sehingga setiap program bisa memilih tafsiran yang ia butuhkan,
+terlepas dari bahasa manusia mana data itu berasal.</p>
+<p>Alasan terakhir Rust tidak mengizinkan kita mengindeks <code>String</code> untuk mendapatkan
+karakter adalah karena operasi indeks diharapkan selalu berjalan dalam waktu
+konstan (O(1)). Tapi mustahil menjamin performa itu dengan <code>String</code>, karena Rust
+harus menelusuri isi dari awal sampai indeks untuk menentukan berapa banyak
+karakter valid yang ada.</p>
+<h3 id="memotong-string"><a class="header" href="#memotong-string">Memotong String</a></h3>
+<p>Mengindeks string sering kali buruk karena tidak jelas seharusnya tipe kembalian
+dari operasi indeks string berupa apa: nilai byte, karakter, grapheme cluster,
+atau string slice. Karena itu, jika kamu benar-benar perlu memakai indeks untuk
+membuat string slice, Rust meminta kamu lebih spesifik.</p>
+<p>Alih-alih mengindeks dengan <code>[]</code> dan satu angka, kamu bisa memakai <code>[]</code> dengan
+rentang untuk membuat string slice yang berisi byte tertentu:</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let hello = "Здравствуйте";
+
+let s = &amp;hello[0..4];
+<span class="boring">}</span></code></pre>
+<p>Di sini, <code>s</code> akan menjadi <code>&amp;str</code> yang berisi 4 byte pertama string. Tadi kita
+menyebut setiap karakter ini berukuran 2 byte, yang berarti <code>s</code> akan menjadi
+<code>Зд</code>.</p>
+<p>Jika kita mencoba memotong hanya sebagian byte dari sebuah karakter dengan
+sesuatu seperti <code>&amp;hello[0..1]</code>, Rust akan panic di runtime dengan cara yang sama
+seakan indeks tidak valid diakses pada sebuah vector:</p>
+<pre><code class="language-console">$ cargo run
+   Compiling collections v0.1.0 (file:///projects/collections)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.43s
+     Running `target/debug/collections`
+
+thread 'main' (6017738) panicked at src/main.rs:4:19:
+end byte index 1 is not a char boundary; it is inside 'З' (bytes 0..2 of string)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+</code></pre>
+<p>Kamu harus berhati-hati ketika membuat string slice dengan rentang, karena
+melakukannya bisa membuat programmu crash.</p>
+<!-- Old headings. Do not remove or links may break. -->
+<p><a id="methods-for-iterating-over-strings"></a></p>
+<h3 id="mengiterasi-string"><a class="header" href="#mengiterasi-string">Mengiterasi String</a></h3>
+<p>Cara terbaik untuk mengoperasikan potongan-potongan string adalah dengan
+menyatakan secara eksplisit apakah kamu menginginkan karakter atau byte. Untuk
+Unicode scalar value individual, gunakan method <code>chars</code>. Memanggil <code>chars</code> pada
+“Зд” akan memisahkan dan mengembalikan dua nilai bertipe <code>char</code>, dan kamu bisa
+mengiterasi hasilnya untuk mengakses setiap elemen:</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>for c in "Зд".chars() {
+    println!("{c}");
+}
+<span class="boring">}</span></code></pre>
+<p>Kode ini akan mencetak berikut:</p>
+<pre><code class="language-text">З
+д
+</code></pre>
+<p>Sebagai alternatif, method <code>bytes</code> mengembalikan setiap byte mentah, yang mungkin
+lebih sesuai untuk domain kamu:</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>for b in "Зд".bytes() {
+    println!("{b}");
+}
+<span class="boring">}</span></code></pre>
+<p>Kode ini akan mencetak 4 byte penyusun string ini:</p>
+<pre><code class="language-text">208
+151
+208
+180
+</code></pre>
+<p>Tapi pastikan untuk selalu ingat bahwa Unicode scalar value yang valid bisa
+terdiri dari lebih dari 1 byte.</p>
+<p>Mendapatkan grapheme cluster dari string, seperti pada aksara Devanagari, adalah
+hal yang rumit, sehingga fungsi ini tidak disediakan oleh standard library. Crate
+tersedia di <a href="https://crates.io/">crates.io</a><!-- ignore --> jika itu adalah
+fungsionalitas yang kamu butuhkan.</p>
+<!-- Old headings. Do not remove or links may break. -->
+<p><a id="strings-are-not-so-simple"></a></p>
+<h3 id="menangani-kerumitan-string"><a class="header" href="#menangani-kerumitan-string">Menangani Kerumitan String</a></h3>
+<p>Sebagai ringkasan, string itu rumit. Bahasa pemrograman yang berbeda membuat
+pilihan berbeda tentang cara menyajikan kerumitan ini kepada programmer. Rust
+memilih menjadikan penanganan <code>String</code> yang benar sebagai perilaku bawaan untuk
+semua program Rust, yang berarti programmer harus berpikir lebih keras saat
+menangani data UTF-8 sejak awal. Trade-off ini menampilkan lebih banyak kerumitan
+string daripada yang terlihat di bahasa pemrograman lain, tapi mencegah kamu
+dari kesulitan menangani error yang melibatkan karakter non-ASCII di kemudian
+hari dalam siklus pengembanganmu.</p>
+<p>Kabar baiknya, standard library menawarkan banyak fungsi yang dibangun di atas
+tipe <code>String</code> dan <code>&amp;str</code> untuk membantu menangani situasi yang rumit ini dengan
+benar. Pastikan untuk memeriksa dokumentasi method berguna seperti <code>contains</code>
+untuk mencari dalam string dan <code>replace</code> untuk mengganti bagian string dengan
+string lain.</p>
+<p>Mari kita beralih ke sesuatu yang sedikit lebih sederhana: hash map!</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch08-01-vectors.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="ch08-03-hash-maps.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch08-01-vectors.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="ch08-03-hash-maps.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="ferris-2317480c.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

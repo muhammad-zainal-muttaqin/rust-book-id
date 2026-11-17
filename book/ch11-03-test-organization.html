@@ -1,0 +1,427 @@
+<!DOCTYPE HTML>
+<html lang="id" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Organisasi Test - Bahasa Pemrograman Rust</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-e96d0476.css">
+        <link rel="stylesheet" href="css/chrome-d279d366.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="ferris-d33b75bf.css">
+        <link rel="stylesheet" href="theme/2018-edition-4e126c62.css">
+        <link rel="stylesheet" href="theme/semantic-notes-9b5766c0.css">
+        <link rel="stylesheet" href="theme/listing-cab26221.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-d171f728.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-632b8c09.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Bahasa Pemrograman Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h2 id="organisasi-test"><a class="header" href="#organisasi-test">Organisasi Test</a></h2>
+<p>Seperti yang disebutkan di awal bab ini, testing adalah disiplin yang kompleks, dan tiap orang memakai istilah serta cara pengorganisasian yang berbeda. Komunitas Rust memandang test dalam dua kategori utama: unit test dan integration test. <em>Unit test</em> berukuran kecil dan lebih terfokus, menguji satu module secara terpisah pada satu waktu, serta bisa menguji antarmuka private. <em>Integration test</em> sepenuhnya berada di luar library kamu dan memakai kode kamu seperti layaknya kode eksternal lainnya, hanya menggunakan antarmuka publik dan bisa jadi melibatkan beberapa module dalam satu test.</p>
+<p>Menulis kedua jenis test itu penting untuk memastikan bagian-bagian library kamu melakukan apa yang kamu harapkan, baik secara terpisah maupun bersama-sama.</p>
+<h3 id="unit-test"><a class="header" href="#unit-test">Unit Test</a></h3>
+<p>Tujuan unit test adalah menguji setiap unit kode secara terpisah dari kode lainnya agar kita bisa dengan cepat menemukan bagian mana yang bekerja dan mana yang tidak sesuai harapan. Kamu akan meletakkan unit test di direktori <em>src</em>, di dalam setiap file yang berisi kode yang diuji. Kebiasaannya, kamu membuat module bernama <code>tests</code> di tiap file untuk menampung fungsi-fungsi test, lalu menandai module itu dengan <code>cfg(test)</code>.</p>
+<h4 id="module-tests-dan-cfgtest"><a class="header" href="#module-tests-dan-cfgtest">Module <code>tests</code> dan <code>#[cfg(test)]</code></a></h4>
+<p>Anotasi <code>#[cfg(test)]</code> pada module <code>tests</code> memberi tahu Rust untuk mengompilasi dan menjalankan kode test hanya saat kamu menjalankan <code>cargo test</code>, bukan saat menjalankan <code>cargo build</code>. Ini menghemat waktu kompilasi saat kamu hanya ingin membangun library, sekaligus menghemat ruang pada hasil kompilasi karena test tidak ikut disertakan. Kamu akan melihat bahwa karena integration test ditempatkan di direktori lain, mereka tidak memerlukan anotasi <code>#[cfg(test)]</code>. Namun, karena unit test berada di file yang sama dengan kode, kamu memakai <code>#[cfg(test)]</code> untuk menentukan bahwa test-test itu tidak boleh disertakan dalam hasil kompilasi.</p>
+<p>Ingatlah bahwa saat kita membuat proyek baru <code>adder</code> di bagian pertama bab ini, Cargo menghasilkan kode ini untuk kita:</p>
+<p><span class="filename">Filename: src/lib.rs</span></p>
+<pre><code class="language-rust noplayground">pub fn add(left: u64, right: u64) -&gt; u64 {
+    left + right
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn it_works() {
+        let result = add(2, 2);
+        assert_eq!(result, 4);
+    }
+}</code></pre>
+<p>Pada module <code>tests</code> yang dihasilkan otomatis itu, atribut <code>cfg</code> adalah singkatan dari <em>configuration</em> dan memberi tahu Rust bahwa item setelahnya hanya boleh disertakan apabila ada opsi konfigurasi tertentu. Dalam kasus ini, opsi konfigurasi tersebut adalah <code>test</code>, yang disediakan Rust untuk mengompilasi dan menjalankan test. Dengan memakai atribut <code>cfg</code>, Cargo mengompilasi kode test kita hanya jika kita secara aktif menjalankan test dengan <code>cargo test</code>. Ini juga mencakup fungsi-fungsi pembantu yang mungkin ada di dalam module ini, selain fungsi-fungsi yang ditandai dengan <code>#[test]</code>.</p>
+<!-- Old headings. Do not remove or links may break. -->
+<p><a id="testing-private-functions"></a></p>
+<h4 id="test-fungsi-private"><a class="header" href="#test-fungsi-private">Test Fungsi Private</a></h4>
+<p>Ada perdebatan di kalangan komunitas testing soal apakah fungsi private sebaiknya diuji langsung atau tidak, dan bahasa lain ada yang membuat pengujian fungsi private menjadi sulit atau bahkan mustahil. Apapun aliran testing yang kamu ikuti, aturan privasi Rust tetap mengizinkan kamu menguji fungsi private. Perhatikan kode pada Listing 11-12 dengan fungsi private <code>internal_adder</code>.</p>
+<figure class="listing" id="listing-11-12">
+<span class="file-name">Filename: src/lib.rs</span>
+<pre><code class="language-rust noplayground">pub fn add_two(a: u64) -&gt; u64 {
+    internal_adder(a, 2)
+}
+
+fn internal_adder(left: u64, right: u64) -&gt; u64 {
+    left + right
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn internal() {
+        let result = internal_adder(2, 2);
+        assert_eq!(result, 4);
+    }
+}</code></pre>
+<figcaption><a href="#listing-11-12">Listing 11-12</a>: Testing a private function</figcaption>
+</figure>
+<p>Perhatikan bahwa fungsi <code>internal_adder</code> tidak ditandai sebagai <code>pub</code>. Test hanyalah kode Rust, dan module <code>tests</code> hanyalah module biasa. Seperti yang kita bahas di <a href="ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html">“Paths for Referring to an Item in the Module Tree”</a><!-- ignore -->, item di dalam module anak bisa memakai item dari module induknya. Dalam test ini, kita membawa semua item milik induk module <code>tests</code> ke dalam scope dengan <code>use super::*</code>, lalu test itu bisa memanggil <code>internal_adder</code>. Kalau kamu berpendapat bahwa fungsi private tidak perlu diuji, tidak ada satupun dalam Rust yang memaksamu melakukannya.</p>
+<h3 id="integration-test"><a class="header" href="#integration-test">Integration Test</a></h3>
+<p>Di Rust, integration test sepenuhnya berada di luar library kamu. Mereka memakai library kamu seperti kode lainnya, yang berarti mereka hanya bisa memanggil fungsi-fungsi yang merupakan bagian dari API publik library kamu. Tujuannya adalah menguji apakah banyak bagian dari library kamu bekerja bersama dengan benar. Unit kode yang bekerja dengan benar secara mandiri bisa saja bermasalah saat digabungkan, jadi cakupan test pada kode yang sudah terintegrasi juga penting. Untuk membuat integration test, kamu pertama-tama memerlukan direktori <em>tests</em>.</p>
+<h4 id="direktori-tests"><a class="header" href="#direktori-tests">Direktori <em>tests</em></a></h4>
+<p>Kita membuat direktori <em>tests</em> di level teratas direktori proyek, bersebelahan dengan <em>src</em>. Cargo tahu bahwa ia harus mencari file integration test di direktori ini. Setelah itu, kita bisa membuat sebanyak apapun file test yang kita mau, dan Cargo akan mengompilasi masing-masing file sebagai crate tersendiri.</p>
+<p>Mari kita buat sebuah integration test. Dengan kode dari Listing 11-12 masih berada di file <em>src/lib.rs</em>, buatlah direktori <em>tests</em>, lalu buat file baru bernama <em>tests/integration_test.rs</em>. Struktur direktori kamu seharusnya terlihat seperti ini:</p>
+<pre><code class="language-text">adder
+├── Cargo.lock
+├── Cargo.toml
+├── src
+│   └── lib.rs
+└── tests
+    └── integration_test.rs
+</code></pre>
+<p>Masukkan kode dari Listing 11-13 ke dalam file <em>tests/integration_test.rs</em>.</p>
+<figure class="listing" id="listing-11-13">
+<span class="file-name">Filename: tests/integration_test.rs</span>
+<pre><code class="language-rust ignore">use adder::add_two;
+
+#[test]
+fn it_adds_two() {
+    let result = add_two(2);
+    assert_eq!(result, 4);
+}</code></pre>
+<figcaption><a href="#listing-11-13">Listing 11-13</a>: An integration test of a function in the <code>adder</code> crate</figcaption>
+</figure>
+<p>Setiap file di direktori <em>tests</em> adalah crate tersendiri, jadi kita perlu membawa library kita ke dalam scope tiap crate test. Untuk itulah kita menambahkan <code>use adder::add_two;</code> di bagian atas kode, yang tidak kita perlukan pada unit test.</p>
+<p>Kita tidak perlu menandai kode apapun di <em>tests/integration_test.rs</em> dengan <code>#[cfg(test)]</code>. Cargo memperlakukan direktori <em>tests</em> secara khusus dan hanya mengompilasi file-file di direktori ini saat kita menjalankan <code>cargo test</code>. Sekarang jalankan <code>cargo test</code>:</p>
+<pre><code class="language-console">$ cargo test
+   Compiling adder v0.1.0 (file:///projects/adder)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.31s
+     Running unittests src/lib.rs (target/debug/deps/adder-1082c4b063a8fbe6)
+
+running 1 test
+test tests::internal ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/integration_test.rs (target/debug/deps/integration_test-1082c4b063a8fbe6)
+
+running 1 test
+test it_adds_two ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests adder
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+</code></pre>
+<p>Tiga bagian pada keluaran itu mencakup unit test, integration test, dan doc test. Perhatikan bahwa jika ada test yang gagal di sebuah bagian, bagian-bagian setelahnya tidak akan dijalankan. Misalnya, jika sebuah unit test gagal, tidak akan ada keluaran untuk integration test dan doc test, karena test-test itu hanya akan dijalankan jika semua unit test lulus.</p>
+<p>Bagian pertama untuk unit test sama seperti yang terus kita lihat: satu baris untuk setiap unit test (satu bernama <code>internal</code> yang kita tambahkan di Listing 11-12), lalu satu baris ringkasan untuk unit test.</p>
+<p>Bagian integration test dimulai dengan baris <code>Running tests/integration_test.rs</code>. Berikutnya, ada satu baris untuk setiap fungsi test dalam integration test itu dan satu baris ringkasan untuk hasil integration test tepat sebelum bagian <code>Doc-tests adder</code> dimulai.</p>
+<p>Setiap file integration test punya bagiannya sendiri, jadi kalau kita menambahkan lebih banyak file di direktori <em>tests</em>, akan ada lebih banyak bagian integration test.</p>
+<p>Kita tetap bisa menjalankan satu fungsi integration test tertentu dengan menentukan nama fungsi itu sebagai argumen untuk <code>cargo test</code>. Untuk menjalankan semua test di dalam satu file integration test tertentu, gunakan argumen <code>--test</code> dari <code>cargo test</code> yang diikuti nama file tersebut:</p>
+<pre><code class="language-console">$ cargo test --test integration_test
+   Compiling adder v0.1.0 (file:///projects/adder)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.64s
+     Running tests/integration_test.rs (target/debug/deps/integration_test-82e7799c1bc62298)
+
+running 1 test
+test it_adds_two ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+</code></pre>
+<p>Perintah ini hanya menjalankan test-test di dalam file <em>tests/integration_test.rs</em>.</p>
+<h4 id="submodule-dalam-integration-test"><a class="header" href="#submodule-dalam-integration-test">Submodule dalam Integration Test</a></h4>
+<p>Saat kamu menambahkan lebih banyak integration test, kamu mungkin ingin membuat lebih banyak file di direktori <em>tests</em> untuk membantu mengorganisasinya; misalnya, kamu bisa mengelompokkan fungsi-fungsi test berdasarkan fungsionalitas yang mereka uji. Seperti disebutkan sebelumnya, setiap file di direktori <em>tests</em> dikompilasi sebagai crate tersendiri, yang berguna untuk membuat scope terpisah agar lebih menyerupai cara pemakai akhir memakai crate kamu. Namun, ini berarti file-file di direktori <em>tests</em> tidak berperilaku sama seperti file-file di <em>src</em>, seperti yang kamu pelajari di Bab 7 tentang cara memisahkan kode ke dalam module dan file.</p>
+<p>Perbedaan perilaku file-file di direktori <em>tests</em> ini paling terasa saat kamu memiliki sekumpulan fungsi pembantu yang dipakai di beberapa file integration test, lalu kamu mencoba mengikuti langkah-langkah di bagian <a href="ch07-05-separating-modules-into-different-files.html">“Separating Modules into Different Files”</a><!-- ignore --> Bab 7 untuk mengekstraknya menjadi module bersama. Misalnya, jika kita membuat <em>tests/common.rs</em> dan meletakkan fungsi bernama <code>setup</code> di dalamnya, kita bisa menambahkan kode ke <code>setup</code> yang ingin kita panggil dari beberapa fungsi test di beberapa file test:</p>
+<p><span class="filename">Filename: tests/common.rs</span></p>
+<pre><code class="language-rust noplayground">pub fn setup() {
+    // setup code specific to your library's tests would go here
+}</code></pre>
+<p>Saat kita menjalankan test lagi, kita akan melihat bagian baru pada keluaran test untuk file <em>common.rs</em>, meskipun file ini tidak berisi fungsi test apapun dan kita juga tidak memanggil fungsi <code>setup</code> dari mana pun:</p>
+<pre><code class="language-console">$ cargo test
+   Compiling adder v0.1.0 (file:///projects/adder)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.89s
+     Running unittests src/lib.rs (target/debug/deps/adder-92948b65e88960b4)
+
+running 1 test
+test tests::internal ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/common.rs (target/debug/deps/common-92948b65e88960b4)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/integration_test.rs (target/debug/deps/integration_test-92948b65e88960b4)
+
+running 1 test
+test it_adds_two ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests adder
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+</code></pre>
+<p>Munculnya <code>common</code> di hasil test dengan tampilan <code>running 0 tests</code> bukanlah yang kita inginkan. Kita hanya ingin berbagi kode dengan file-file integration test lainnya. Untuk menghindari <code>common</code> muncul di keluaran test, alih-alih membuat <em>tests/common.rs</em>, kita akan membuat <em>tests/common/mod.rs</em>. Sekarang direktori proyek terlihat seperti ini:</p>
+<pre><code class="language-text">├── Cargo.lock
+├── Cargo.toml
+├── src
+│   └── lib.rs
+└── tests
+    ├── common
+    │   └── mod.rs
+    └── integration_test.rs
+</code></pre>
+<p>Ini adalah konvensi penamaan lama yang juga masih dipahami Rust dan kita singgung di <a href="ch07-05-separating-modules-into-different-files.html#alternate-file-paths">“Alternate File Paths”</a><!-- ignore --> Bab 7. Menamai file dengan cara ini memberi tahu Rust agar tidak memperlakukan module <code>common</code> sebagai file integration test. Saat kita memindahkan kode fungsi <code>setup</code> ke <em>tests/common/mod.rs</em> dan menghapus file <em>tests/common.rs</em>, bagian itu di keluaran test tidak akan muncul lagi. File-file di dalam subdirectory direktori <em>tests</em> tidak dikompilasi sebagai crate terpisah atau punya bagian tersendiri di keluaran test.</p>
+<p>Setelah kita membuat <em>tests/common/mod.rs</em>, kita bisa memakainya dari file integration test manapun sebagai sebuah module. Berikut contoh memanggil fungsi <code>setup</code> dari test <code>it_adds_two</code> di <em>tests/integration_test.rs</em>:</p>
+<p><span class="filename">Filename: tests/integration_test.rs</span></p>
+<pre><code class="language-rust ignore">use adder::add_two;
+
+mod common;
+
+#[test]
+fn it_adds_two() {
+    common::setup();
+
+    let result = add_two(2);
+    assert_eq!(result, 4);
+}</code></pre>
+<p>Perhatikan bahwa deklarasi <code>mod common;</code> sama dengan deklarasi module yang kita tunjukkan di Listing 7-21. Lalu, di dalam fungsi test, kita bisa memanggil fungsi <code>common::setup()</code>.</p>
+<h4 id="integration-test-untuk-crate-biner"><a class="header" href="#integration-test-untuk-crate-biner">Integration Test untuk Crate Biner</a></h4>
+<p>Jika proyek kita adalah crate biner yang hanya berisi file <em>src/main.rs</em> dan tidak punya file <em>src/lib.rs</em>, kita tidak bisa membuat integration test di direktori <em>tests</em> lalu membawa fungsi-fungsi yang didefinisikan di file <em>src/main.rs</em> ke dalam scope dengan pernyataan <code>use</code>. Hanya crate library yang mengekspos fungsi yang bisa dipakai crate lain; crate biner memang ditujukan untuk dijalankan sendiri.</p>
+<p>Ini adalah salah satu alasan mengapa proyek Rust yang menyediakan biner punya file <em>src/main.rs</em> yang sederhana yang memanggil logika yang berada di file <em>src/lib.rs</em>. Dengan struktur seperti itu, integration test <em>bisa</em> menguji crate library dengan <code>use</code> agar fungsionalitas penting tersedia. Jika fungsionalitas penting itu bekerja, sedikit kode di file <em>src/main.rs</em> juga akan bekerja, dan sedikit kode itu tidak perlu diuji.</p>
+<h2 id="ringkasan"><a class="header" href="#ringkasan">Ringkasan</a></h2>
+<p>Fitur testing Rust menyediakan cara untuk menentukan bagaimana kode seharusnya bekerja guna memastikan kode itu terus bekerja sesuai harapan, bahkan saat kamu melakukan perubahan. Unit test menguji bagian-bagian berbeda dari sebuah library secara terpisah dan bisa menguji detail implementasi private. Integration test memeriksa apakah banyak bagian dari library bekerja bersama dengan benar, dan mereka memakai API publik library untuk menguji kode dengan cara yang sama seperti kode eksternal akan memakainya. Meskipun sistem tipe dan aturan ownership Rust membantu mencegah beberapa jenis bug, test tetap penting untuk mengurangi bug logika yang berkaitan dengan perilaku yang diharapkan dari kode kamu.</p>
+<p>Mari kita gabungkan pengetahuan yang kamu pelajari di bab ini dan bab-bab sebelumnya untuk mengerjakan sebuah proyek!</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch11-02-running-tests.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="ch12-00-an-io-project.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch11-02-running-tests.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="ch12-00-an-io-project.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="ferris-2317480c.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

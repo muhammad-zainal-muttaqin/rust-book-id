@@ -1,0 +1,633 @@
+<!DOCTYPE HTML>
+<html lang="id" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Tipe Data - Bahasa Pemrograman Rust</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-e96d0476.css">
+        <link rel="stylesheet" href="css/chrome-d279d366.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="ferris-d33b75bf.css">
+        <link rel="stylesheet" href="theme/2018-edition-4e126c62.css">
+        <link rel="stylesheet" href="theme/semantic-notes-9b5766c0.css">
+        <link rel="stylesheet" href="theme/listing-cab26221.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-d171f728.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-632b8c09.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Bahasa Pemrograman Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <p><a id="data-types"></a></p>
+<h2 id="tipe-data"><a class="header" href="#tipe-data">Tipe Data</a></h2>
+<p>Setiap nilai di Rust memiliki suatu <em>tipe data</em> tertentu. Tipe itu memberi tahu
+Rust jenis data apa yang sedang kamu tentukan, sehingga Rust tahu cara bekerja
+dengan data tersebut. Kita akan melihat dua kelompok tipe data: skalar dan
+komposit.</p>
+<p>Perlu diingat bahwa Rust adalah bahasa yang <em>bertipe statis</em>, artinya Rust
+harus mengetahui tipe semua variabel pada waktu kompilasi. Biasanya compiler
+bisa menyimpulkan tipe yang ingin kita pakai berdasarkan nilai dan cara kita
+menggunakannya. Pada kasus di mana banyak tipe yang mungkin—seperti ketika kita
+mengonversi <code>String</code> ke tipe numerik menggunakan <code>parse</code> di bagian
+<a href="ch02-00-guessing-game-tutorial.html#comparing-the-guess-to-the-secret-number">“Membandingkan Tebakannya dengan Angka
+Rahasia”</a><!-- ignore --> di Bab 2—kita
+harus menambahkan anotasi tipe, seperti ini:</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let guess: u32 = "42".parse().expect("Not a number!");
+<span class="boring">}</span></code></pre>
+<p>Jika kita tidak menambahkan anotasi tipe <code>: u32</code> seperti pada kode sebelumnya,
+Rust akan menampilkan error berikut, yang berarti compiler butuh informasi
+lebih dari kita untuk mengetahui tipe mana yang ingin kita pakai:</p>
+<pre><code class="language-console">$ cargo build
+   Compiling no_type_annotations v0.1.0 (file:///projects/no_type_annotations)
+error[E0284]: type annotations needed
+ --&gt; src/main.rs:2:9
+  |
+2 |     let guess = "42".parse().expect("Not a number!");
+  |         ^^^^^        ----- type must be known at this point
+  |
+  = note: cannot satisfy `&lt;_ as FromStr&gt;::Err == _`
+  = note: the type must also implement `FromStr`
+note: required by a bound in `core::str::&lt;impl str&gt;::parse`
+ --&gt; /rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/str/mod.rs:2782:4
+help: consider giving `guess` an explicit type
+  |
+2 |     let guess: /* Type */ = "42".parse().expect("Not a number!");
+  |              ++++++++++++
+
+For more information about this error, try `rustc --explain E0284`.
+error: could not compile `no_type_annotations` (bin "no_type_annotations") due to 1 previous error
+</code></pre>
+<p>Kamu akan melihat anotasi tipe yang berbeda untuk tipe data lainnya.</p>
+<h3 id="tipe-skalar"><a class="header" href="#tipe-skalar">Tipe Skalar</a></h3>
+<p>Tipe <em>skalar</em> merepresentasikan satu nilai. Rust punya empat tipe skalar
+utama: bilangan bulat, bilangan floating-point, Boolean, dan karakter. Mungkin
+kamu mengenalnya dari bahasa pemrograman lain. Mari kita bahas cara kerjanya
+di Rust.</p>
+<p><a id="integer-types"></a></p>
+<h4 id="tipe-bilangan-bulat"><a class="header" href="#tipe-bilangan-bulat">Tipe Bilangan Bulat</a></h4>
+<p><em>Bilangan bulat</em> adalah angka tanpa komponen pecahan. Kita sudah memakai satu
+tipe bilangan bulat di Bab 2, yaitu tipe <code>u32</code>. Deklarasi tipe ini menunjukkan
+bahwa nilai yang terkait dengannya harus berupa bilangan bulat signed (tipe
+bilangan bulat signed diawali <code>i</code>, bukan <code>u</code>) yang memakan ruang 32 bit.
+Tabel 3-1 menunjukkan tipe bilangan bulat bawaan di Rust. Kita bisa memakai
+varian mana pun untuk mendeklarasikan tipe sebuah nilai bilangan bulat.</p>
+<p><span class="caption">Tabel 3-1: Tipe Bilangan Bulat di Rust</span></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Panjang</th><th>Bertanda</th><th>Tanpa Tanda</th></tr>
+</thead>
+<tbody>
+<tr><td>8-bit</td><td><code>i8</code></td><td><code>u8</code></td></tr>
+<tr><td>16-bit</td><td><code>i16</code></td><td><code>u16</code></td></tr>
+<tr><td>32-bit</td><td><code>i32</code></td><td><code>u32</code></td></tr>
+<tr><td>64-bit</td><td><code>i64</code></td><td><code>u64</code></td></tr>
+<tr><td>128-bit</td><td><code>i128</code></td><td><code>u128</code></td></tr>
+<tr><td>Bergantung arsitektur</td><td><code>isize</code></td><td><code>usize</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>Setiap varian bisa berupa signed atau unsigned dan punya ukuran yang eksplisit.
+<em>Signed</em> dan <em>unsigned</em> menunjukkan apakah sebuah angka bisa bernegatif—dengan
+kata lain, apakah angka itu perlu membawa tanda (signed), atau apakah angka itu
+hanya akan selalu positif sehingga bisa direpresentasikan tanpa tanda
+(unsigned). Seperti menulis angka di kertas: ketika tandanya penting, sebuah
+angka ditampilkan dengan tanda plus atau minus; tetapi ketika aman
+mengasumsikan angka itu positif, angka itu ditampilkan tanpa tanda. Angka
+signed disimpan menggunakan representasi <a href="https://en.wikipedia.org/wiki/Two%27s_complement">two’s
+complement</a><!-- ignore
+-->.</p>
+<p>Setiap varian signed bisa menyimpan angka dari −(2<sup>n − 1</sup>) sampai
+2<sup>n − 1</sup> − 1 inklusif, di mana <em>n</em> adalah jumlah bit yang dipakai
+varian tersebut. Jadi, sebuah <code>i8</code> bisa menyimpan angka dari −(2<sup>7</sup>)
+sampai 2<sup>7</sup> − 1, yang sama dengan −128 sampai 127. Varian unsigned
+bisa menyimpan angka dari 0 sampai 2<sup>n</sup> − 1, sehingga sebuah <code>u8</code>
+bisa menyimpan angka dari 0 sampai 2<sup>8</sup> − 1, yang sama dengan 0
+sampai 255.</p>
+<p>Selain itu, tipe <code>isize</code> dan <code>usize</code> bergantung pada arsitektur komputer tempat
+program kamu berjalan: 64 bit jika kamu berada di arsitektur 64-bit dan 32 bit
+jika kamu berada di arsitektur 32-bit.</p>
+<p>Kamu bisa menulis literal bilangan bulat dalam bentuk apa pun yang ditampilkan
+di Tabel 3-2. Perhatikan bahwa literal angka yang bisa berupa beberapa tipe
+numerik mengizinkan sebuah akhiran tipe, seperti <code>57u8</code>, untuk menentukan
+tipenya. Literal angka juga bisa memakai <code>_</code> sebagai pemisah visual agar
+angkanya lebih mudah dibaca, seperti <code>1_000</code>, yang punya nilai sama dengan
+jika kamu menulis <code>1000</code>.</p>
+<p><span class="caption">Tabel 3-2: Literal Bilangan Bulat di Rust</span></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Literal angka</th><th>Contoh</th></tr>
+</thead>
+<tbody>
+<tr><td>Desimal</td><td><code>98_222</code></td></tr>
+<tr><td>Heksadesimal</td><td><code>0xff</code></td></tr>
+<tr><td>Oktal</td><td><code>0o77</code></td></tr>
+<tr><td>Biner</td><td><code>0b1111_0000</code></td></tr>
+<tr><td>Byte (hanya <code>u8</code>)</td><td><code>b'A'</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>Lalu bagaimana kamu tahu harus memakai tipe bilangan bulat yang mana? Jika
+kamu ragu, nilai default Rust biasanya tempat yang baik untuk memulai: tipe
+bilangan bulat secara default adalah <code>i32</code>. Situasi utama di mana kamu akan
+memakai <code>isize</code> atau <code>usize</code> adalah saat mengindeks semacam kumpulan.</p>
+<section class="note" aria-role="note">
+<h5 id="overflow-bilangan-bulat"><a class="header" href="#overflow-bilangan-bulat">Overflow Bilangan Bulat</a></h5>
+<p>Misalnya kamu punya variabel bertipe <code>u8</code> yang bisa menampung nilai antara 0
+dan 255. Jika kamu mencoba mengubah variabel itu ke nilai di luar rentang
+tersebut, seperti 256, <em>overflow bilangan bulat</em> akan terjadi, yang bisa
+menghasilkan salah satu dari dua perilaku. Saat kamu mengompilasi dalam mode
+debug, Rust menyertakan pemeriksaan overflow bilangan bulat yang membuat
+program kamu <em>panic</em> pada runtime jika perilaku ini terjadi. Rust memakai
+istilah <em>panicking</em> ketika program keluar karena sebuah error; kita akan
+membahas panic lebih dalam di bagian <a href="ch09-01-unrecoverable-errors-with-panic.html">“Error yang Tidak Bisa Dipulihkan dengan
+<code>panic!</code>”</a><!-- ignore --> di Bab 9.</p>
+<p>Saat kamu mengompilasi dalam mode release dengan flag <code>--release</code>, Rust
+<em>tidak</em> menyertakan pemeriksaan overflow bilangan bulat yang memicu panic.
+Sebaliknya, jika overflow terjadi, Rust melakukan <em>two’s complement
+wrapping</em>. Singkatnya, nilai yang lebih besar dari nilai maksimum yang bisa
+ditampung tipe tersebut akan “wrap around” ke nilai minimum yang bisa
+ditampung tipe itu. Pada kasus <code>u8</code>, nilai 256 menjadi 0, nilai 257 menjadi
+1, dan seterusnya. Program tidak akan panic, tetapi variabel itu akan punya
+nilai yang mungkin bukan yang kamu harapkan. Mengandalkan perilaku wrapping
+dari overflow bilangan bulat dianggap sebagai sebuah error.</p>
+<p>Untuk menangani kemungkinan overflow secara eksplisit, kamu bisa memakai
+kelompok method berikut yang disediakan library standar untuk tipe numerik
+primitif:</p>
+<ul>
+<li>Membungkus (wrap) di semua mode kompilasi dengan method <code>wrapping_*</code>,
+seperti <code>wrapping_add</code>.</li>
+<li>Mengembalikan nilai <code>None</code> jika terjadi overflow, dengan method
+<code>checked_*</code>.</li>
+<li>Mengembalikan nilai serta Boolean yang menunjukkan apakah terjadi overflow,
+dengan method <code>overflowing_*</code>.</li>
+<li>Menjenuhkan ke nilai minimum atau maksimum dengan method <code>saturating_*</code>.</li>
+</ul>
+</section>
+<h4 id="tipe-floating-point"><a class="header" href="#tipe-floating-point">Tipe Floating-Point</a></h4>
+<p>Rust juga punya dua tipe primitif untuk <em>bilangan floating-point</em>, yaitu angka
+yang punya titik desimal. Tipe floating-point di Rust adalah <code>f32</code> dan <code>f64</code>,
+yang berukuran 32 bit dan 64 bit secara berturut-turut. Tipe defaultnya adalah
+<code>f64</code> karena di CPU modern, kecepatannya kira-kira sama dengan <code>f32</code> tetapi
+mampu memberikan presisi lebih tinggi. Semua tipe floating-point bersifat
+signed.</p>
+<p>Berikut contoh yang menunjukkan bilangan floating-point dalam aksi:</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn main() {
+    let x = 2.0; // f64
+
+    let y: f32 = 3.0; // f32
+}</code></pre>
+<p>Bilangan floating-point direpresentasikan sesuai standar IEEE-754.</p>
+<h4 id="operasi-numerik"><a class="header" href="#operasi-numerik">Operasi Numerik</a></h4>
+<p>Rust mendukung operasi matematika dasar yang kamu harapkan untuk semua tipe
+angka: penjumlahan, pengurangan, perkalian, pembagian, dan sisa bagi. Pembagian
+bilangan bulat membuang bagian pecahannya menuju nol. Kode berikut menunjukkan
+cara memakai setiap operasi numerik dalam sebuah statement <code>let</code>:</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn main() {
+    // addition
+    let sum = 5 + 10;
+
+    // subtraction
+    let difference = 95.5 - 4.3;
+
+    // multiplication
+    let product = 4 * 30;
+
+    // division
+    let quotient = 56.7 / 32.2;
+    let truncated = -5 / 3; // Results in -1
+
+    // remainder
+    let remainder = 43 % 5;
+}</code></pre>
+<p>Setiap ekspresi dalam statement ini memakai sebuah operator matematika dan
+dievaluasi menjadi satu nilai, yang kemudian diikat ke sebuah variabel.
+<a href="appendix-02-operators.html">Lampiran B</a><!-- ignore --> berisi daftar semua operator yang
+disediakan Rust.</p>
+<h4 id="tipe-boolean"><a class="header" href="#tipe-boolean">Tipe Boolean</a></h4>
+<p>Seperti kebanyakan bahasa pemrograman lain, tipe Boolean di Rust punya dua
+nilai yang mungkin: <code>true</code> dan <code>false</code>. Boolean berukuran satu byte. Tipe
+Boolean di Rust didefinisikan dengan <code>bool</code>. Sebagai contoh:</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn main() {
+    let t = true;
+
+    let f: bool = false; // with explicit type annotation
+}</code></pre>
+<p>Cara utama memakai nilai Boolean adalah melalui kondisional, seperti ekspresi
+<code>if</code>. Kita akan membahas cara kerja ekspresi <code>if</code> di Rust di bagian <a href="ch03-05-control-flow.html#control-flow">“Alur
+Kontrol”</a><!-- ignore -->.</p>
+<h4 id="tipe-karakter"><a class="header" href="#tipe-karakter">Tipe Karakter</a></h4>
+<p>Tipe <code>char</code> di Rust adalah tipe alfabet paling primitif dalam bahasa ini.
+Berikut beberapa contoh deklarasi nilai <code>char</code>:</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn main() {
+    let c = 'z';
+    let z: char = 'ℤ'; // with explicit type annotation
+    let heart_eyed_cat = '😻';
+}</code></pre>
+<p>Perhatikan bahwa kita menulis literal <code>char</code> dengan tanda kutip tunggal,
+berbeda dengan literal string yang memakai tanda kutip ganda. Tipe <code>char</code> di
+Rust berukuran 4 byte dan merepresentasikan sebuah nilai skalar Unicode,
+artinya ia bisa mewakili jauh lebih banyak dari sekadar ASCII. Huruf beraksen;
+karakter Tionghoa, Jepang, dan Korea; emoji; serta spasi lebar nol semuanya
+merupakan nilai <code>char</code> yang valid di Rust. Nilai skalar Unicode berkisar dari
+<code>U+0000</code> sampai <code>U+D7FF</code> dan <code>U+E000</code> sampai <code>U+10FFFF</code> inklusif. Namun,
+“karakter” sebenarnya bukan konsep dalam Unicode, jadi intuisi manusiawi kamu
+tentang apa itu “karakter” mungkin tidak cocok dengan pengertian <code>char</code> di
+Rust. Kita akan membahas topik ini secara detail di <a href="ch08-02-strings.html#storing-utf-8-encoded-text-with-strings">“Menyimpan Teks Terenkripsi
+UTF-8 dengan String”</a><!-- ignore --> di Bab 8.</p>
+<h3 id="tipe-komposit"><a class="header" href="#tipe-komposit">Tipe Komposit</a></h3>
+<p><em>Tipe komposit</em> bisa mengelompokkan beberapa nilai ke dalam satu tipe. Rust
+punya dua tipe komposit primitif: tuple dan array.</p>
+<p><a id="the-tuple-type"></a></p>
+<h4 id="tipe-tuple"><a class="header" href="#tipe-tuple">Tipe Tuple</a></h4>
+<p><em>Tuple</em> adalah cara umum untuk mengelompokkan sejumlah nilai dengan berbagai
+tipe ke dalam satu tipe komposit. Tuple punya panjang tetap: sekali
+dideklarasikan, ukurannya tidak bisa membesar atau mengecil.</p>
+<p>Kita membuat tuple dengan menulis daftar nilai yang dipisahkan koma di dalam
+tanda kurung bulat. Setiap posisi dalam tuple punya sebuah tipe, dan tipe dari
+nilai-nilai berbeda dalam tuple tidak harus sama. Pada contoh ini kita
+menambahkan anotasi tipe yang opsional:</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn main() {
+    let tup: (i32, f64, u8) = (500, 6.4, 1);
+}</code></pre>
+<p>Variabel <code>tup</code> mengikat ke seluruh tuple karena tuple dianggap sebagai satu
+elemen komposit. Untuk mengambil nilai-nilai individual dari sebuah tuple, kita
+bisa memakai pencocokan pola untuk mendestruksi nilai tuple, seperti ini:</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn main() {
+    let tup = (500, 6.4, 1);
+
+    let (x, y, z) = tup;
+
+    println!("The value of y is: {y}");
+}</code></pre>
+<p>Program ini pertama-tama membuat sebuah tuple dan mengikatnya ke variabel
+<code>tup</code>. Lalu ia memakai sebuah pola bersama <code>let</code> untuk mengambil <code>tup</code> dan
+mengubahnya menjadi tiga variabel terpisah, yaitu <code>x</code>, <code>y</code>, dan <code>z</code>. Hal ini
+disebut <em>destructuring</em> karena memecah tuple tunggal tersebut menjadi tiga
+bagian. Terakhir, program mencetak nilai <code>y</code>, yaitu <code>6.4</code>.</p>
+<p>Kita juga bisa mengakses elemen tuple secara langsung dengan titik (<code>.</code>)
+diikuti indeks nilai yang ingin diakses. Sebagai contoh:</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn main() {
+    let x: (i32, f64, u8) = (500, 6.4, 1);
+
+    let five_hundred = x.0;
+
+    let six_point_four = x.1;
+
+    let one = x.2;
+}</code></pre>
+<p>Program ini membuat tuple <code>x</code> lalu mengakses setiap elemennya menggunakan
+indeks masing-masing. Seperti kebanyakan bahasa pemrograman, indeks pertama
+dalam sebuah tuple adalah 0.</p>
+<p>Tuple tanpa nilai apa pun punya nama khusus, yaitu <em>unit</em>. Nilai ini dan tipe
+yang bersangkutan sama-sama ditulis <code>()</code> dan merepresentasikan nilai kosong
+atau tipe kembalian kosong. Ekspresi secara implisit mengembalikan nilai unit
+jika tidak mengembalikan nilai lain.</p>
+<h4 id="tipe-array"><a class="header" href="#tipe-array">Tipe Array</a></h4>
+<p>Cara lain untuk punya kumpulan beberapa nilai adalah dengan sebuah <em>array</em>.
+Berbeda dengan tuple, setiap elemen array harus punya tipe yang sama. Berbeda
+dengan array di beberapa bahasa lain, array di Rust punya panjang tetap.</p>
+<p>Kita menulis nilai dalam sebuah array sebagai daftar yang dipisahkan koma di
+dalam kurung siku:</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn main() {
+    let a = [1, 2, 3, 4, 5];
+}</code></pre>
+<p>Array berguna ketika kamu ingin data kamu dialokasikan di stack, sama seperti
+tipe-tipe lain yang sudah kita lihat sejauh ini, alih-alih di heap (kita akan
+membahas stack dan heap lebih lanjut di <a href="ch04-01-what-is-ownership.html#the-stack-and-the-heap">Bab 4</a><!-- ignore -->),
+atau ketika kamu ingin memastikan selalu punya jumlah elemen yang tetap.
+Namun, array tidak sefleksibel tipe vector. <em>Vector</em> adalah tipe kumpulan
+serupa yang disediakan library standar dan boleh membesar atau mengecil
+ukurannya karena isinya hidup di heap. Jika kamu ragu harus memakai array atau
+vector, kemungkinan besar kamu sebaiknya memakai vector. <a href="ch08-01-vectors.html">Bab
+8</a><!-- ignore --> membahas vector lebih lanjut.</p>
+<p>Namun, array lebih berguna ketika kamu tahu jumlah elemennya tidak akan
+berubah. Sebagai contoh, jika kamu memakai nama bulan dalam sebuah program,
+kamu mungkin akan memakai array alih-alih vector karena kamu tahu isinya
+selalu 12 elemen:</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let months = ["January", "February", "March", "April", "May", "June", "July",
+              "August", "September", "October", "November", "December"];
+<span class="boring">}</span></code></pre>
+<p>Kamu menulis tipe sebuah array dengan kurung siku berisi tipe setiap elemen,
+lalu titik koma, dan terakhir jumlah elemen dalam array, seperti ini:</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a: [i32; 5] = [1, 2, 3, 4, 5];
+<span class="boring">}</span></code></pre>
+<p>Di sini, <code>i32</code> adalah tipe setiap elemen. Setelah titik koma, angka <code>5</code>
+menunjukkan array berisi lima elemen.</p>
+<p>Kamu juga bisa menginisialisasi array agar setiap elemennya punya nilai yang
+sama dengan menentukan nilai awal, diikuti titik koma, lalu panjang array di
+dalam kurung siku, seperti ini:</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a = [3; 5];
+<span class="boring">}</span></code></pre>
+<p>Array bernama <code>a</code> akan berisi <code>5</code> elemen yang semuanya diatur ke nilai <code>3</code>
+pada awalnya. Ini sama dengan menulis <code>let a = [3, 3, 3, 3, 3];</code> tetapi dengan
+cara yang lebih ringkas.</p>
+<!-- Old headings. Do not remove or links may break. -->
+<p><a id="accessing-array-elements"></a></p>
+<h4 id="akses-elemen-array"><a class="header" href="#akses-elemen-array">Akses Elemen Array</a></h4>
+<p>Array adalah satu blok memori berukuran tetap yang sudah diketahui dan bisa
+dialokasikan di stack. Kamu bisa mengakses elemen array menggunakan indeks,
+seperti ini:</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024">fn main() {
+    let a = [1, 2, 3, 4, 5];
+
+    let first = a[0];
+    let second = a[1];
+}</code></pre>
+<p>Pada contoh ini, variabel bernama <code>first</code> akan mendapat nilai <code>1</code> karena nilai
+itu berada di indeks <code>[0]</code> dalam array. Variabel bernama <code>second</code> akan mendapat
+nilai <code>2</code> dari indeks <code>[1]</code> dalam array.</p>
+<h4 id="akses-elemen-array-yang-tidak-valid"><a class="header" href="#akses-elemen-array-yang-tidak-valid">Akses Elemen Array yang Tidak Valid</a></h4>
+<p>Mari kita lihat apa yang terjadi jika kamu mencoba mengakses elemen array yang
+berada melewati akhir array. Misalnya kamu menjalankan kode berikut, mirip
+dengan game tebak-tebakan di Bab 2, untuk mendapatkan indeks array dari
+pengguna:</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre><code class="language-rust ignore panics">use std::io;
+
+fn main() {
+    let a = [1, 2, 3, 4, 5];
+
+    println!("Please enter an array index.");
+
+    let mut index = String::new();
+
+    io::stdin()
+        .read_line(&amp;mut index)
+        .expect("Failed to read line");
+
+    let index: usize = index
+        .trim()
+        .parse()
+        .expect("Index entered was not a number");
+
+    let element = a[index];
+
+    println!("The value of the element at index {index} is: {element}");
+}</code></pre>
+<p>Kode ini berhasil dikompilasi. Jika kamu menjalankan kode ini dengan <code>cargo run</code> lalu memasukkan <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, atau <code>4</code>, program akan mencetak nilai
+yang sesuai di indeks tersebut dalam array. Sebaliknya, jika kamu memasukkan
+angka yang melewati akhir array, misalnya <code>10</code>, kamu akan melihat keluaran
+seperti ini:</p>
+<!-- manual-regeneration
+cd listings/ch03-common-programming-concepts/no-listing-15-invalid-array-access
+cargo run
+10
+-->
+<pre><code class="language-console">thread 'main' panicked at src/main.rs:19:19:
+index out of bounds: the len is 5 but the index is 10
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+</code></pre>
+<p>Program menghasilkan error runtime pada saat nilai tidak valid dipakai dalam
+operasi indeks. Program keluar dengan pesan error dan tidak mengeksekusi
+statement <code>println!</code> terakhir. Saat kamu mencoba mengakses elemen menggunakan
+indeks, Rust akan memeriksa bahwa indeks yang kamu tentukan lebih kecil dari
+panjang array. Jika indeksnya lebih besar atau sama dengan panjangnya, Rust
+akan panic. Pemeriksaan ini harus terjadi pada runtime, terutama dalam kasus
+ini, karena compiler tidak mungkin tahu nilai apa yang akan dimasukkan
+pengguna saat menjalankan kode tersebut nanti.</p>
+<p>Ini adalah contoh prinsip keamanan memori Rust dalam aksi. Di banyak bahasa
+tingkat rendah, pemeriksaan semacam ini tidak dilakukan, dan ketika kamu
+memberikan indeks yang salah, memori yang tidak valid bisa diakses. Rust
+melindungi kamu dari error semacam ini dengan langsung keluar, alih-alih
+mengizinkan akses memori itu terjadi lalu melanjutkan program. Bab 9 membahas
+lebih lanjut tentang penanganan error di Rust dan bagaimana kamu bisa menulis
+kode yang mudah dibaca dan aman, yang tidak panic maupun mengizinkan akses
+memori yang tidak valid.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch03-01-variables-and-mutability.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="ch03-03-how-functions-work.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch03-01-variables-and-mutability.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="ch03-03-how-functions-work.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="ferris-2317480c.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE HTML>
+<html lang="id" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Menyimpan Daftar Nilai dengan Vector - Bahasa Pemrograman Rust</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-e96d0476.css">
+        <link rel="stylesheet" href="css/chrome-d279d366.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="ferris-d33b75bf.css">
+        <link rel="stylesheet" href="theme/2018-edition-4e126c62.css">
+        <link rel="stylesheet" href="theme/semantic-notes-9b5766c0.css">
+        <link rel="stylesheet" href="theme/listing-cab26221.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-d171f728.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-632b8c09.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Bahasa Pemrograman Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h2 id="menyimpan-daftar-nilai-dengan-vector"><a class="header" href="#menyimpan-daftar-nilai-dengan-vector">Menyimpan Daftar Nilai dengan Vector</a></h2>
+<p>Jenis koleksi pertama yang kita bahas adalah <code>Vec&lt;T&gt;</code>, yang juga dikenal sebagai
+<em>vector</em>. Vector memungkinkan kamu menyimpan lebih dari satu nilai dalam satu
+struktur data yang menaruh semua nilai tersebut bersebelahan di memori. Vector
+hanya bisa menyimpan nilai dengan tipe yang sama. Vector berguna saat kamu punya
+daftar item, misalnya baris teks dalam sebuah file atau harga-harga barang dalam
+troli belanja.</p>
+<h3 id="membuat-vector-baru"><a class="header" href="#membuat-vector-baru">Membuat Vector Baru</a></h3>
+<p>Untuk membuat vector baru yang kosong, kita memanggil fungsi <code>Vec::new</code>, seperti
+ditampilkan pada Listing 8-1.</p>
+<figure class="listing" id="listing-8-1">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let v: Vec&lt;i32&gt; = Vec::new();
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-8-1">Listing 8-1</a>: Creating a new, empty vector to hold values of type <code>i32</code></figcaption>
+</figure>
+<p>Perhatikan bahwa kita menambahkan anotasi tipe di sini. Karena kita belum
+memasukkan nilai apa pun ke dalam vector ini, Rust tidak tahu jenis elemen yang
+kita simpan. Ini poin penting. Vector diimplementasikan dengan generic; kita
+akan membahas cara memakai generic dengan tipe buatanmu sendiri di Bab 10.
+Untuk saat ini, cukup ketahui bahwa tipe <code>Vec&lt;T&gt;</code> yang disediakan standard
+library bisa menampung tipe apa pun. Saat kita membuat vector untuk menampung
+tipe tertentu, kita bisa menyebutkan tipe tersebut di dalam kurung siku. Pada
+Listing 8-1, kita sudah memberi tahu Rust bahwa <code>Vec&lt;T&gt;</code> di <code>v</code> akan menampung
+elemen bertipe <code>i32</code>.</p>
+<p>Lebih sering, kamu akan membuat <code>Vec&lt;T&gt;</code> dengan nilai awal, dan Rust akan
+menyimpulkan tipe nilai yang ingin kamu simpan, sehingga jarang sekali kamu
+perlu menulis anotasi tipe seperti ini. Rust menyediakan macro <code>vec!</code> yang
+praktis; macro itu akan membuat vector baru yang menampung nilai-nilai yang kamu
+berikan. Listing 8-2 membuat <code>Vec&lt;i32&gt;</code> baru yang menampung nilai <code>1</code>, <code>2</code>, dan
+<code>3</code>. Tipe integer-nya adalah <code>i32</code> karena itu adalah tipe integer bawaan, seperti
+yang kita bahas di bagian <a href="ch03-02-data-types.html#data-types">“Tipe Data”</a><!-- ignore --> pada Bab 3.</p>
+<figure class="listing" id="listing-8-2">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let v = vec![1, 2, 3];
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-8-2">Listing 8-2</a>: Creating a new vector containing values</figcaption>
+</figure>
+<p>Karena kita sudah memberi nilai awal bertipe <code>i32</code>, Rust bisa menyimpulkan bahwa
+tipe <code>v</code> adalah <code>Vec&lt;i32&gt;</code>, sehingga anotasi tipe tidak diperlukan. Selanjutnya,
+kita akan melihat cara mengubah vector.</p>
+<h3 id="memperbarui-vector"><a class="header" href="#memperbarui-vector">Memperbarui Vector</a></h3>
+<p>Untuk membuat vector lalu menambahkan elemen ke dalamnya, kita bisa memakai
+metode <code>push</code>, seperti ditampilkan pada Listing 8-3.</p>
+<figure class="listing" id="listing-8-3">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let mut v = Vec::new();
+
+    v.push(5);
+    v.push(6);
+    v.push(7);
+    v.push(8);
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-8-3">Listing 8-3</a>: Using the <code>push</code> method to add values to a vector</figcaption>
+</figure>
+<p>Seperti variabel lain, jika kita ingin bisa mengubah nilainya, kita perlu
+membuatnya mutable dengan kata kunci <code>mut</code>, seperti dibahas di Bab 3. Angka-angka
+yang kita masukkan semuanya bertipe <code>i32</code>, dan Rust menyimpulkan hal itu dari
+datanya, jadi kita tidak perlu anotasi <code>Vec&lt;i32&gt;</code>.</p>
+<h3 id="membaca-elemen-vector"><a class="header" href="#membaca-elemen-vector">Membaca Elemen Vector</a></h3>
+<p>Ada dua cara untuk mereferensikan nilai yang tersimpan di dalam vector: lewat
+indeks atau dengan memakai metode <code>get</code>. Pada contoh-contoh berikut, kita
+memberikan anotasi tipe pada nilai yang dikembalikan oleh fungsi-fungsi itu
+agar lebih jelas.</p>
+<p>Listing 8-4 menampilkan kedua cara mengakses sebuah nilai dalam vector, yaitu
+sintaks indeks dan metode <code>get</code>.</p>
+<figure class="listing" id="listing-8-4">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let v = vec![1, 2, 3, 4, 5];
+
+    let third: &amp;i32 = &amp;v[2];
+    println!("The third element is {third}");
+
+    let third: Option&lt;&amp;i32&gt; = v.get(2);
+    match third {
+        Some(third) =&gt; println!("The third element is {third}"),
+        None =&gt; println!("There is no third element."),
+    }
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-8-4">Listing 8-4</a>: Using indexing syntax and using the <code>get</code> method to access an item in a vector</figcaption>
+</figure>
+<p>Perhatikan beberapa hal di sini. Kita memakai nilai indeks <code>2</code> untuk mengambil
+elemen ketiga karena vector diindeks berdasarkan angka, dimulai dari nol.
+Memakai <code>&amp;</code> dan <code>[]</code> memberikan kita reference ke elemen pada nilai indeks
+tersebut. Saat kita memakai metode <code>get</code> dengan indeks yang diteruskan sebagai
+argumen, kita mendapat <code>Option&lt;&amp;T&gt;</code> yang bisa dipakai bersama <code>match</code>.</p>
+<p>Rust menyediakan dua cara untuk mereferensikan sebuah elemen agar kamu bisa
+memilih perilaku program saat kamu mencoba memakai nilai indeks yang berada di
+luar rentang elemen yang ada. Sebagai contoh, mari kita lihat apa yang terjadi
+saat kita punya vector berisi lima elemen lalu mencoba mengakses elemen pada
+indeks 100 dengan masing-masing teknik, seperti ditampilkan pada Listing 8-5.</p>
+<figure class="listing" id="listing-8-5">
+<pre class="playground"><code class="language-rust should_panic panics edition2024"><span class="boring">fn main() {
+</span>    let v = vec![1, 2, 3, 4, 5];
+
+    let does_not_exist = &amp;v[100];
+    let does_not_exist = v.get(100);
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-8-5">Listing 8-5</a>: Attempting to access the element at index 100 in a vector containing five elements</figcaption>
+</figure>
+<p>Saat kita menjalankan kode ini, cara pertama dengan <code>[]</code> akan membuat program
+panic karena mereferensikan elemen yang tidak ada. Cara ini paling tepat dipakai
+jika kamu ingin program crash ketika ada upaya mengakses elemen melewati akhir
+vector.</p>
+<p>Saat metode <code>get</code> diberikan indeks yang berada di luar vector, metode itu
+mengembalikan <code>None</code> tanpa panic. Kamu akan memakai metode ini jika akses ke
+elemen di luar rentang vector mungkin terjadi sesekali dalam keadaan normal.
+Kode kamu lalu punya logika untuk menangani kondisi <code>Some(&amp;element)</code> maupun
+<code>None</code>, seperti dibahas di Bab 6. Sebagai contoh, indeksnya bisa berasal dari
+inputan angka seorang pengguna. Jika mereka tidak sengaja memasukkan angka yang
+terlalu besar dan program mendapat nilai <code>None</code>, kamu bisa memberi tahu pengguna
+berapa banyak item yang ada di vector saat ini lalu memberi mereka kesempatan
+lain untuk memasukkan nilai yang valid. Itu akan lebih ramah pengguna daripada
+membuat program crash gara-gara salah ketik!</p>
+<p>Saat program punya reference yang valid, borrow checker menegakkan aturan
+ownership dan borrowing (dibahas di Bab 4) untuk memastikan reference ini dan
+reference lain ke isi vector tetap valid. Ingat aturan yang menyatakan bahwa kamu
+tidak boleh punya reference mutable dan immutable dalam scope yang sama. Aturan
+itu berlaku pada Listing 8-6, di mana kita menahan reference immutable ke elemen
+pertama dalam sebuah vector lalu mencoba menambahkan elemen di akhir. Program
+ini tidak akan bisa berjalan jika kita juga mencoba merujuk ke elemen tersebut
+nanti di dalam fungsi.</p>
+<figure class="listing" id="listing-8-6">
+<pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
+</span>    let mut v = vec![1, 2, 3, 4, 5];
+
+    let first = &amp;v[0];
+
+    v.push(6);
+
+    println!("The first element is: {first}");
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-8-6">Listing 8-6</a>: Attempting to add an element to a vector while holding a reference to an item</figcaption>
+</figure>
+<p>Mengompilasi kode ini akan menghasilkan error berikut:</p>
+<pre><code class="language-console">$ cargo run
+   Compiling collections v0.1.0 (file:///projects/collections)
+error[E0502]: cannot borrow `v` as mutable because it is also borrowed as immutable
+ --&gt; src/main.rs:6:5
+  |
+4 |     let first = &amp;v[0];
+  |                  - immutable borrow occurs here
+5 |
+6 |     v.push(6);
+  |     ^^^^^^^^^ mutable borrow occurs here
+7 |
+8 |     println!("The first element is: {first}");
+  |                                      ----- immutable borrow later used here
+
+For more information about this error, try `rustc --explain E0502`.
+error: could not compile `collections` (bin "collections") due to 1 previous error
+</code></pre>
+<p>Kode di Listing 8-6 mungkin terlihat seharusnya bisa bekerja: mengapa reference
+ke elemen pertama harus peduli dengan perubahan di akhir vector? Error ini
+muncul karena cara kerja vector: karena vector menaruh nilai-nilainya
+bersebelahan di memori, menambahkan elemen baru di akhir vector mungkin
+membutuhkan alokasi memori baru dan menyalin elemen-elemen lama ke ruang baru,
+jika ruangnya tidak cukup untuk menaruh semua elemen bersebelahan di tempat
+vector saat ini disimpan. Dalam kasus itu, reference ke elemen pertama akan
+menunjuk ke memori yang sudah dialokasikan ulang. Aturan borrowing mencegah
+program berada dalam kondisi seperti itu.</p>
+<blockquote>
+<p>Catatan: Untuk lebih jauh tentang detail implementasi tipe <code>Vec&lt;T&gt;</code>, lihat
+<a href="../nomicon/vec/vec.html">“The Rustonomicon”</a>.</p>
+</blockquote>
+<h3 id="mengiterasi-nilai-dalam-vector"><a class="header" href="#mengiterasi-nilai-dalam-vector">Mengiterasi Nilai dalam Vector</a></h3>
+<p>Untuk mengakses setiap elemen dalam sebuah vector bergantian, kita akan
+mengiterasi semua elemen tersebut alih-alih memakai indeks untuk mengaksesnya
+satu per satu. Listing 8-7 menunjukkan cara memakai loop <code>for</code> untuk mendapatkan
+reference immutable ke setiap elemen dalam sebuah vector berisi nilai <code>i32</code> lalu
+mencetaknya.</p>
+<figure class="listing" id="listing-8-7">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let v = vec![100, 32, 57];
+    for i in &amp;v {
+        println!("{i}");
+    }
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-8-7">Listing 8-7</a>: Printing each element in a vector by iterating over the elements using a <code>for</code> loop</figcaption>
+</figure>
+<p>Kita juga bisa mengiterasi reference mutable ke setiap elemen dalam sebuah vector
+mutable untuk mengubah semua elemennya. Loop <code>for</code> pada Listing 8-8 akan
+menambahkan <code>50</code> ke setiap elemen.</p>
+<figure class="listing" id="listing-8-8">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    let mut v = vec![100, 32, 57];
+    for i in &amp;mut v {
+        *i += 50;
+    }
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-8-8">Listing 8-8</a>: Iterating over mutable references to elements in a vector</figcaption>
+</figure>
+<p>Untuk mengubah nilai yang dirujuk oleh reference mutable, kita harus memakai
+operator dereference <code>*</code> untuk mencapai nilai di dalam <code>i</code> sebelum kita bisa
+memakai operator <code>+=</code>. Kita akan membahas operator dereference lebih lanjut di
+bagian <a href="ch15-02-deref.html#following-the-pointer-to-the-value-with-the-dereference-operator">“Mengikuti Reference ke Nilai”</a><!-- ignore --> pada Bab 15.</p>
+<p>Mengiterasi sebuah vector, baik secara immutable maupun mutable, aman berkat
+aturan borrow checker. Jika kita mencoba menyisipkan atau menghapus item di
+dalam badan loop <code>for</code> pada Listing 8-7 dan Listing 8-8, kita akan mendapat
+error compiler yang mirip dengan yang kita dapat pada kode di Listing 8-6.
+Reference ke vector yang dipegang oleh loop <code>for</code> mencegah perubahan terhadap
+seluruh vector secara bersamaan.</p>
+<h3 id="memakai-enum-untuk-menyimpan-beberapa-tipe"><a class="header" href="#memakai-enum-untuk-menyimpan-beberapa-tipe">Memakai Enum untuk Menyimpan Beberapa Tipe</a></h3>
+<p>Vector hanya bisa menyimpan nilai dengan tipe yang sama. Hal ini bisa merepotkan;
+memang ada kasus penggunaan yang membutuhkan penyimpanan daftar item dengan
+tipe berbeda. Untungnya, varian-varian sebuah enum didefinisikan di bawah tipe
+enum yang sama, jadi saat kita butuh satu tipe untuk mewakili elemen-elemen
+dengan tipe berbeda, kita bisa mendefinisikan dan memakai sebuah enum!</p>
+<p>Sebagai contoh, misalkan kita ingin mengambil nilai dari sebuah baris dalam
+spreadsheet di mana sebagian kolom pada baris itu berisi integer, sebagian
+angka floating-point, dan sebagian string. Kita bisa mendefinisikan sebuah enum
+yang varian-variannya akan menampung tipe-tipe nilai berbeda tersebut, dan semua
+varian enum akan dianggap bertipe sama, yaitu tipe enum-nya. Dengan begitu, kita
+bisa membuat vector untuk menampung enum itu dan pada akhirnya menampung
+tipe-tipe yang berbeda. Kita sudah mendemonstrasikannya pada Listing 8-9.</p>
+<figure class="listing" id="listing-8-9">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    enum SpreadsheetCell {
+        Int(i32),
+        Float(f64),
+        Text(String),
+    }
+
+    let row = vec![
+        SpreadsheetCell::Int(3),
+        SpreadsheetCell::Text(String::from("blue")),
+        SpreadsheetCell::Float(10.12),
+    ];
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-8-9">Listing 8-9</a>: Defining an enum to store values of different types in one vector</figcaption>
+</figure>
+<p>Rust perlu mengetahui tipe-tipe apa yang akan ada di dalam vector pada waktu
+compile agar Rust tahu persis berapa banyak memori di heap yang dibutuhkan untuk
+menyimpan setiap elemen. Kita juga harus eksplisit soal tipe-tipe yang diizinkan
+dalam vector ini. Jika Rust mengizinkan sebuah vector menampung tipe apa pun,
+bisa jadi salah satu atau lebih dari tipe-tipe itu menimbulkan error saat
+operasi-operandi dijalankan pada elemen-elemen vector. Memakai enum plus
+ekspresi <code>match</code> berarti Rust akan menjamin pada waktu compile bahwa setiap
+kemungkinan kasus tertangani, seperti dibahas di Bab 6.</p>
+<p>Jika kamu tidak mengetahui kumpulan tipe lengkap yang akan diterima program saat
+runtime untuk disimpan dalam sebuah vector, teknik enum tidak akan bekerja.
+Sebagai gantinya, kamu bisa memakai trait object, yang akan kita bahas di Bab 18.</p>
+<p>Setelah kita membahas beberapa cara paling umum memakai vector, pastikan kamu
+meninjau <a href="../std/vec/struct.Vec.html">dokumentasi API</a><!-- ignore --> untuk semua metode berguna
+yang didefinisikan pada <code>Vec&lt;T&gt;</code> oleh standard library. Sebagai contoh, selain
+<code>push</code>, ada metode <code>pop</code> yang menghapus dan mengembalikan elemen terakhir.</p>
+<h3 id="membuang-vector-juga-membuang-elemen-nya"><a class="header" href="#membuang-vector-juga-membuang-elemen-nya">Membuang Vector Juga Membuang Elemen-nya</a></h3>
+<p>Seperti <code>struct</code> lainnya, sebuah vector dibebaskan saat keluar dari scope, seperti
+ditandai pada Listing 8-10.</p>
+<figure class="listing" id="listing-8-10">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">fn main() {
+</span>    {
+        let v = vec![1, 2, 3, 4];
+
+        // do stuff with v
+    } // &lt;- v goes out of scope and is freed here
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-8-10">Listing 8-10</a>: Showing where the vector and its elements are dropped</figcaption>
+</figure>
+<p>Saat vector dibuang, seluruh isinya juga dibuang, artinya integer yang ditampung
+di dalamnya akan dibersihkan. Borrow checker memastikan bahwa reference apa pun
+ke isi sebuah vector hanya dipakai selama vector itu sendiri masih valid.</p>
+<p>Mari kita lanjut ke jenis koleksi berikutnya: <code>String</code>!</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch08-00-common-collections.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="ch08-02-strings.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch08-00-common-collections.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="ch08-02-strings.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="ferris-2317480c.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

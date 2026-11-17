@@ -1,0 +1,808 @@
+<!DOCTYPE HTML>
+<html lang="id" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Error yang Dapat Dipulihkan dengan Result - Bahasa Pemrograman Rust</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-e96d0476.css">
+        <link rel="stylesheet" href="css/chrome-d279d366.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="ferris-d33b75bf.css">
+        <link rel="stylesheet" href="theme/2018-edition-4e126c62.css">
+        <link rel="stylesheet" href="theme/semantic-notes-9b5766c0.css">
+        <link rel="stylesheet" href="theme/listing-cab26221.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-d171f728.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-632b8c09.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Bahasa Pemrograman Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h2 id="error-yang-bisa-dipulihkan-dengan-result"><a class="header" href="#error-yang-bisa-dipulihkan-dengan-result">Error yang Bisa Dipulihkan dengan <code>Result</code></a></h2>
+<p>Kebanyakan error tidak cukup serius sampai harus menghentikan program secara
+keseluruhan. Kadang, saat sebuah fungsi gagal, penyebabnya bisa kamu mengerti
+dan tangani dengan mudah. Misalnya, jika kamu mencoba membuka sebuah file dan
+operasi itu gagal karena file-nya tidak ada, kamu mungkin ingin membuat filenya
+alih-alih menghentikan proses.</p>
+<p>Ingat dari <a href="ch02-00-guessing-game-tutorial.html#handling-potential-failure-with-result">“Menangani Kemungkinan Kegagalan dengan <code>Result</code>”</a><!--
+ignore --> di Bab 2 bahwa enum <code>Result</code> didefinisikan dengan dua varian, <code>Ok</code> dan
+<code>Err</code>, seperti berikut:</p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>enum Result&lt;T, E&gt; {
+    Ok(T),
+    Err(E),
+}
+<span class="boring">}</span></code></pre>
+<p><code>T</code> dan <code>E</code> adalah parameter tipe generik: Kita akan membahas generic lebih
+detail di Bab 10. Yang perlu kamu tahu sekarang adalah <code>T</code> mewakili tipe nilai
+yang akan dikembalikan dalam kasus sukses di dalam varian <code>Ok</code>, dan <code>E</code> mewakili
+tipe error yang akan dikembalikan dalam kasus gagal di dalam varian <code>Err</code>.
+Karena <code>Result</code> punya parameter tipe generik ini, kita bisa memakai tipe <code>Result</code>
+dan fungsi-fungsi yang didefinisikan di atasnya dalam banyak situasi berbeda,
+di mana nilai sukses dan nilai error yang ingin kita kembalikan bisa berbeda.</p>
+<p>Mari kita panggil sebuah fungsi yang mengembalikan nilai <code>Result</code>, karena fungsi
+itu bisa saja gagal. Pada Listing 9-3, kita mencoba membuka sebuah file.</p>
+<figure class="listing" id="listing-9-3">
+<span class="file-name">Filename: src/main.rs</span>
+<pre class="playground"><code class="language-rust edition2024">use std::fs::File;
+
+fn main() {
+    let greeting_file_result = File::open("hello.txt");
+}</code></pre>
+<figcaption><a href="#listing-9-3">Listing 9-3</a>: Membuka sebuah file</figcaption>
+</figure>
+<p>Tipe kembalian dari <code>File::open</code> adalah <code>Result&lt;T, E&gt;</code>. Parameter generik <code>T</code>
+sudah diisi oleh implementasi <code>File::open</code> dengan tipe nilai sukses,
+<code>std::fs::File</code>, yang merupakan sebuah handle file. Tipe <code>E</code> yang dipakai dalam
+nilai error adalah <code>std::io::Error</code>. Tipe kembalian ini berarti pemanggilan
+<code>File::open</code> bisa berhasil dan mengembalikan handle file yang bisa kita baca atau
+tulis. Pemanggilan fungsi itu juga bisa gagal: misalnya, file-nya mungkin tidak
+ada, atau kita mungkin tidak punya izin untuk mengaksesnya. Fungsi <code>File::open</code>
+perlu punya cara untuk memberi tahu kita apakah pemanggilan itu berhasil atau
+gagal, dan sekaligus memberi kita handle file atau informasi error. Informasi
+itulah yang justru disampaikan oleh enum <code>Result</code>.</p>
+<p>Pada kasus saat <code>File::open</code> berhasil, nilai di dalam variabel
+<code>greeting_file_result</code> akan berupa sebuah instance <code>Ok</code> yang berisi handle file.
+Pada kasus saat gagal, nilai di <code>greeting_file_result</code> akan berupa sebuah
+instance <code>Err</code> yang berisi informasi lebih lanjut tentang jenis error yang
+terjadi.</p>
+<p>Kita perlu menambahkan kode pada Listing 9-3 untuk mengambil tindakan yang
+berbeda bergantung pada nilai yang dikembalikan <code>File::open</code>. Listing 9-4
+menunjukkan satu cara menangani <code>Result</code> memakai alat dasar, yaitu ekspresi
+<code>match</code> yang sudah kita bahas di Bab 6.</p>
+<figure class="listing" id="listing-9-4">
+<span class="file-name">Filename: src/main.rs</span>
+<pre class="playground"><code class="language-rust should_panic edition2024">use std::fs::File;
+
+fn main() {
+    let greeting_file_result = File::open("hello.txt");
+
+    let greeting_file = match greeting_file_result {
+        Ok(file) =&gt; file,
+        Err(error) =&gt; panic!("Problem opening the file: {error:?}"),
+    };
+}</code></pre>
+<figcaption><a href="#listing-9-4">Listing 9-4</a>: Memakai ekspresi <code>match</code> untuk menangani varian <code>Result</code> yang mungkin dikembalikan</figcaption>
+</figure>
+<p>Perhatikan bahwa, seperti enum <code>Option</code>, enum <code>Result</code> dan varian-variannya sudah
+dimasukkan ke dalam scope oleh prelude, jadi kita tidak perlu menuliskan
+<code>Result::</code> sebelum varian <code>Ok</code> dan <code>Err</code> di cabang-cabang <code>match</code>.</p>
+<p>Saat hasilnya <code>Ok</code>, kode ini akan mengembalikan nilai <code>file</code> di dalam varian
+<code>Ok</code>, lalu kita menetapkan nilai handle file itu ke variabel <code>greeting_file</code>.
+Setelah <code>match</code>, kita bisa memakai handle file tersebut untuk membaca atau
+menulis.</p>
+<p>Cabang <code>match</code> yang lain menangani kasus saat kita mendapat nilai <code>Err</code> dari
+<code>File::open</code>. Pada contoh ini, kita memilih untuk memanggil macro <code>panic!</code>. Jika
+tidak ada file bernama <em>hello.txt</em> di direktori saat ini dan kita menjalankan
+kode ini, kita akan melihat keluaran berikut dari macro <code>panic!</code>:</p>
+<pre><code class="language-console">$ cargo run
+   Compiling error-handling v0.1.0 (file:///projects/error-handling)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.73s
+     Running `target/debug/error-handling`
+
+thread 'main' (6018048) panicked at src/main.rs:8:23:
+Problem opening the file: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+</code></pre>
+<p>Seperti biasa, keluaran ini memberi tahu kita dengan tepat apa yang salah.</p>
+<h3 id="mencocokkan-berbagai-jenis-error"><a class="header" href="#mencocokkan-berbagai-jenis-error">Mencocokkan Berbagai Jenis Error</a></h3>
+<p>Kode di Listing 9-4 akan <code>panic!</code> tidak peduli mengapa <code>File::open</code> gagal.
+Namun, kita ingin mengambil tindakan berbeda untuk alasan kegagalan yang
+berbeda. Jika <code>File::open</code> gagal karena file-nya tidak ada, kita ingin membuat
+filenya dan mengembalikan handle ke file baru itu. Jika <code>File::open</code> gagal karena
+alasan lain—misalnya karena kita tidak punya izin untuk membuka file-nya—kita
+tetap ingin kode-nya <code>panic!</code> dengan cara yang sama seperti di Listing 9-4. Untuk
+itu, kita menambahkan ekspresi <code>match</code> di dalam, seperti yang ditunjukkan Listing
+9-5.</p>
+<figure class="listing" id="listing-9-5">
+<span class="file-name">Filename: src/main.rs</span>
+<!-- ignore this test because otherwise it creates hello.txt which causes other
+tests to fail lol -->
+<pre><code class="language-rust ignore">use std::fs::File;
+use std::io::ErrorKind;
+
+fn main() {
+    let greeting_file_result = File::open("hello.txt");
+
+    let greeting_file = match greeting_file_result {
+        Ok(file) =&gt; file,
+        Err(error) =&gt; match error.kind() {
+            ErrorKind::NotFound =&gt; match File::create("hello.txt") {
+                Ok(fc) =&gt; fc,
+                Err(e) =&gt; panic!("Problem creating the file: {e:?}"),
+            },
+            _ =&gt; {
+                panic!("Problem opening the file: {error:?}");
+            }
+        },
+    };
+}</code></pre>
+<figcaption><a href="#listing-9-5">Listing 9-5</a>: Menangani berbagai jenis error dengan cara yang berbeda</figcaption>
+</figure>
+<p>Tipe nilai yang dikembalikan <code>File::open</code> di dalam varian <code>Err</code> adalah
+<code>io::Error</code>, sebuah struct yang disediakan oleh standard library. Struct ini
+punya sebuah method, <code>kind</code>, yang bisa kita panggil untuk mendapatkan nilai
+<code>io::ErrorKind</code>. Enum <code>io::ErrorKind</code> disediakan oleh standard library dan
+mempunyai varian-varian yang mewakili berbagai jenis error yang mungkin
+dihasilkan oleh operasi <code>io</code>. Varian yang ingin kita pakai adalah
+<code>ErrorKind::NotFound</code>, yang menandakan file yang ingin kita buka belum ada.
+Jadi, kita mencocokkan <code>greeting_file_result</code>, tetapi kita juga punya <code>match</code> di
+dalam untuk <code>error.kind()</code>.</p>
+<p>Kondisi yang ingin kita cek di <code>match</code> dalam adalah apakah nilai yang
+dikembalikan oleh <code>error.kind()</code> adalah varian <code>NotFound</code> dari enum
+<code>ErrorKind</code>. Jika ya, kita mencoba membuat filenya dengan <code>File::create</code>.
+Namun, karena <code>File::create</code> juga bisa gagal, kita butuh cabang kedua dalam
+ekspresi <code>match</code> dalam itu. Saat file tidak bisa dibuat, pesan error yang
+berbeda akan dicetak. Cabang kedua dari <code>match</code> luar tetap sama, sehingga
+program melakukan panic pada error apa pun selain error file tidak ditemukan.</p>
+<section class="note" aria-role="note">
+<h4 id="alternatif-memakai-match-dengan-resultt-e"><a class="header" href="#alternatif-memakai-match-dengan-resultt-e">Alternatif Memakai <code>match</code> dengan <code>Result&lt;T, E&gt;</code></a></h4>
+<p>Itu <code>match</code> yang cukup banyak! Ekspresi <code>match</code> sangat berguna, tetapi juga
+tergolong primitif. Di Bab 13, kamu akan belajar tentang closure, yang dipakai
+bersama banyak method yang didefinisikan pada <code>Result&lt;T, E&gt;</code>. Method-method ini
+bisa lebih ringkas daripada memakai <code>match</code> saat menangani nilai <code>Result&lt;T, E&gt;</code>
+dalam kode kamu.</p>
+<p>Misalnya, ini cara lain untuk menulis logika yang sama seperti di Listing 9-5,
+kali ini memakai closure dan method <code>unwrap_or_else</code>:</p>
+<!-- CAN'T EXTRACT SEE https://github.com/rust-lang/mdBook/issues/1127 -->
+<pre><code class="language-rust ignore">use std::fs::File;
+use std::io::ErrorKind;
+
+fn main() {
+    let greeting_file = File::open("hello.txt").unwrap_or_else(|error| {
+        if error.kind() == ErrorKind::NotFound {
+            File::create("hello.txt").unwrap_or_else(|error| {
+                panic!("Problem creating the file: {error:?}");
+            })
+        } else {
+            panic!("Problem opening the file: {error:?}");
+        }
+    });
+}</code></pre>
+<p>Meski kode ini punya perilaku yang sama dengan Listing 9-5, kode ini tidak
+memuat ekspresi <code>match</code> apa pun dan lebih bersih dibaca. Kembali ke contoh ini
+setelah kamu membaca Bab 13 dan lihat method <code>unwrap_or_else</code> dalam dokumentasi
+standard library. Masih banyak method lain seperti ini yang bisa merapikan
+ekspresi <code>match</code> bertingkat yang besar saat kamu menangani error.</p>
+</section>
+<!-- Old headings. Do not remove or links may break. -->
+<p><a id="shortcuts-for-panic-on-error-unwrap-and-expect"></a></p>
+<h4 id="jalan-pintas-untuk-panic-saat-error"><a class="header" href="#jalan-pintas-untuk-panic-saat-error">Jalan Pintas untuk Panic saat Error</a></h4>
+<p>Memakai <code>match</code> sudah cukup baik, tetapi bisa agak panjang dan tidak selalu
+menyampaikan maksud dengan jelas. Tipe <code>Result&lt;T, E&gt;</code> punya banyak method
+pembantu yang didefinisikan di atasnya untuk melakukan berbagai tugas yang lebih
+spesifik. Method <code>unwrap</code> adalah method jalan pintas yang diimplementasikan
+persis seperti ekspresi <code>match</code> yang kita tulis di Listing 9-4. Jika nilai
+<code>Result</code> adalah varian <code>Ok</code>, <code>unwrap</code> akan mengembalikan nilai di dalam <code>Ok</code>.
+Jika <code>Result</code> adalah varian <code>Err</code>, <code>unwrap</code> akan memanggil macro <code>panic!</code> untuk
+kita. Berikut contoh <code>unwrap</code> dalam aksi:</p>
+<figure class="listing">
+<span class="file-name">Filename: src/main.rs</span>
+<pre class="playground"><code class="language-rust should_panic edition2024">use std::fs::File;
+
+fn main() {
+    let greeting_file = File::open("hello.txt").unwrap();
+}</code></pre>
+</figure>
+<p>Jika kita menjalankan kode ini tanpa file <em>hello.txt</em>, kita akan melihat pesan
+error dari pemanggilan <code>panic!</code> yang dilakukan method <code>unwrap</code>:</p>
+<!-- manual-regeneration
+cd listings/ch09-error-handling/no-listing-04-unwrap
+cargo run
+copy and paste relevant text
+-->
+<pre><code class="language-text">thread 'main' panicked at src/main.rs:4:49:
+called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+</code></pre>
+<p>Demikian pula, method <code>expect</code> memungkinkan kita juga memilih pesan error
+<code>panic!</code>. Memakai <code>expect</code> alih-alih <code>unwrap</code> serta memberikan pesan error yang
+bagus bisa menyampaikan maksud kamu dan memudahkan pelacakan sumber panic.
+Sintaks <code>expect</code> terlihat seperti ini:</p>
+<figure class="listing">
+<span class="file-name">Filename: src/main.rs</span>
+<pre class="playground"><code class="language-rust should_panic edition2024">use std::fs::File;
+
+fn main() {
+    let greeting_file = File::open("hello.txt")
+        .expect("hello.txt should be included in this project");
+}</code></pre>
+</figure>
+<p>Kita memakai <code>expect</code> dengan cara yang sama seperti <code>unwrap</code>: untuk
+mengembalikan handle file atau memanggil macro <code>panic!</code>. Pesan error yang dipakai
+<code>expect</code> dalam pemanggilan <code>panic!</code>-nya akan berupa parameter yang kita berikan
+ke <code>expect</code>, alih-alih pesan <code>panic!</code> bawaan yang dipakai <code>unwrap</code>. Berikut
+tampilannya:</p>
+<!-- manual-regeneration
+cd listings/ch09-error-handling/no-listing-05-expect
+cargo run
+copy and paste relevant text
+-->
+<pre><code class="language-text">thread 'main' panicked at src/main.rs:5:10:
+hello.txt should be included in this project: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+</code></pre>
+<p>Pada kode siap produksi, kebanyakan Rustacean memilih <code>expect</code> daripada <code>unwrap</code>
+dan memberikan lebih banyak konteks tentang mengapa suatu operasi diharapkan
+selalu berhasil. Dengan begitu, jika asumsi kamu ternyata salah, kamu punya
+lebih banyak informasi untuk dipakai saat melakukan debug.</p>
+<h3 id="menyebarkan-error"><a class="header" href="#menyebarkan-error">Menyebarkan Error</a></h3>
+<p>Saat implementasi sebuah fungsi memanggil sesuatu yang bisa gagal, alih-alih
+menangani error itu di dalam fungsi tersebut, kamu bisa mengembalikan error itu
+ke kode pemanggil agar kode itulah yang memutuskan apa yang harus dilakukan.
+Ini dikenal dengan <em>menyebarkan</em> error dan memberi lebih banyak kendali kepada
+kode pemanggil, di mana mungkin ada lebih banyak informasi atau logika yang
+menentukan bagaimana error sebaiknya ditangani daripada yang tersedia dalam
+konteks kode kamu.</p>
+<p>Misalnya, Listing 9-6 menunjukkan sebuah fungsi yang membaca nama pengguna dari
+sebuah file. Jika file-nya tidak ada atau tidak bisa dibaca, fungsi ini akan
+mengembalikan error-error itu ke kode yang memanggil fungsi tersebut.</p>
+<figure class="listing" id="listing-9-6">
+<span class="file-name">Filename: src/main.rs</span>
+<!-- Deliberately not using rustdoc_include here; the `main` function in the
+file panics. We do want to include it for reader experimentation purposes, but
+don't want to include it for rustdoc testing purposes. -->
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::fs::File;
+use std::io::{self, Read};
+
+fn read_username_from_file() -&gt; Result&lt;String, io::Error&gt; {
+    let username_file_result = File::open("hello.txt");
+
+    let mut username_file = match username_file_result {
+        Ok(file) =&gt; file,
+        Err(e) =&gt; return Err(e),
+    };
+
+    let mut username = String::new();
+
+    match username_file.read_to_string(&amp;mut username) {
+        Ok(_) =&gt; Ok(username),
+        Err(e) =&gt; Err(e),
+    }
+}
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-9-6">Listing 9-6</a>: Sebuah fungsi yang mengembalikan error ke kode pemanggil memakai <code>match</code></figcaption>
+</figure>
+<p>Fungsi ini bisa ditulis dengan jauh lebih pendek, tetapi kita akan mulai dengan
+melakukan banyak hal secara manual untuk menjelajahi penanganan error; pada
+akhirnya, kita akan menunjukkan cara yang lebih pendek. Mari kita lihat dulu
+tipe kembalian fungsinya: <code>Result&lt;String, io::Error&gt;</code>. Ini berarti fungsi itu
+mengembalikan nilai bertipe <code>Result&lt;T, E&gt;</code>, di mana parameter generik <code>T</code> sudah
+diisi dengan tipe konkret <code>String</code> dan parameter tipe generik <code>E</code> sudah diisi
+dengan tipe konkret <code>io::Error</code>.</p>
+<p>Jika fungsi ini berhasil tanpa masalah, kode yang memanggil fungsi ini akan
+menerima nilai <code>Ok</code> yang berisi sebuah <code>String</code>—<code>username</code> yang dibaca fungsi ini
+dari file. Jika fungsi ini mengalami masalah, kode pemanggil akan menerima nilai
+<code>Err</code> yang berisi sebuah instance <code>io::Error</code> dengan informasi lebih lanjut
+tentang masalahnya. Kita memilih <code>io::Error</code> sebagai tipe kembalian fungsi ini
+karena kebetulan itulah tipe nilai error yang dikembalikan oleh kedua operasi
+yang kita panggil dalam tubuh fungsi ini dan bisa gagal: fungsi <code>File::open</code> dan
+method <code>read_to_string</code>.</p>
+<p>Tubuh fungsi dimulai dengan memanggil fungsi <code>File::open</code>. Lalu, kita menangani
+nilai <code>Result</code> dengan <code>match</code> yang mirip dengan <code>match</code> di Listing 9-4. Jika
+<code>File::open</code> berhasil, handle file dalam variabel pattern <code>file</code> menjadi nilai di
+variabel mutable <code>username_file</code>, dan fungsi pun berlanjut. Pada kasus <code>Err</code>,
+alih-alih memanggil <code>panic!</code>, kita memakai keyword <code>return</code> untuk kembali lebih
+awal dari seluruh fungsi dan meneruskan nilai error dari <code>File::open</code>, yang kini
+ada di variabel pattern <code>e</code>, kembali ke kode pemanggil sebagai nilai error fungsi
+ini.</p>
+<p>Jadi, jika kita punya handle file di <code>username_file</code>, fungsi lalu membuat <code>String</code>
+baru di variabel <code>username</code> dan memanggil method <code>read_to_string</code> pada handle
+file di <code>username_file</code> untuk membaca isi file ke dalam <code>username</code>. Method
+<code>read_to_string</code> juga mengembalikan <code>Result</code> karena bisa gagal, meskipun
+<code>File::open</code> sudah berhasil. Jadi, kita butuh <code>match</code> lain untuk menangani
+<code>Result</code> itu: Jika <code>read_to_string</code> berhasil, maka fungsi kita berhasil, dan kita
+mengembalikan username dari file yang sekarang ada di <code>username</code> dalam bungkus
+<code>Ok</code>. Jika <code>read_to_string</code> gagal, kita mengembalikan nilai error dengan cara
+yang sama seperti kita mengembalikan nilai error pada <code>match</code> yang menangani
+kembalian <code>File::open</code>. Namun, kita tidak perlu secara eksplisit menuliskan
+<code>return</code>, karena ini adalah ekspresi terakhir dalam fungsi.</p>
+<p>Kode yang memanggil kode ini lalu akan menangani apakah ia mendapat nilai <code>Ok</code>
+yang berisi username atau nilai <code>Err</code> yang berisi <code>io::Error</code>. Terserah kode
+pemanggil untuk memutuskan apa yang harus dilakukan dengan nilai-nilai itu. Jika
+kode pemanggil mendapat nilai <code>Err</code>, kode itu bisa memanggil <code>panic!</code> dan
+meng crash program, memakai username bawaan, atau mencari username dari tempat
+lain selain file, misalnya. Kita tidak punya cukup informasi tentang apa yang
+sebenarnya sedang dilakukan kode pemanggil, jadi kita menyebarkan semua
+informasi sukses atau error ke atas agar kode itulah yang menangani dengan
+tepat.</p>
+<p>Pola penyebaran error ini sangat umum di Rust, sampai-sampai Rust menyediakan
+operator tanya <code>?</code> untuk memudahkannya.</p>
+<!-- Old headings. Do not remove or links may break. -->
+<p><a id="a-shortcut-for-propagating-errors-the--operator"></a></p>
+<h4 id="jalan-pintas-operator--untuk-menyebarkan-error"><a class="header" href="#jalan-pintas-operator--untuk-menyebarkan-error">Jalan Pintas Operator <code>?</code> untuk Menyebarkan Error</a></h4>
+<p>Listing 9-7 menunjukkan implementasi <code>read_username_from_file</code> yang punya
+fungsionalitas sama seperti di Listing 9-6, tetapi implementasi ini memakai
+operator <code>?</code>.</p>
+<figure class="listing" id="listing-9-7">
+<span class="file-name">Filename: src/main.rs</span>
+<!-- Deliberately not using rustdoc_include here; the `main` function in the
+file panics. We do want to include it for reader experimentation purposes, but
+don't want to include it for rustdoc testing purposes. -->
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::fs::File;
+use std::io::{self, Read};
+
+fn read_username_from_file() -&gt; Result&lt;String, io::Error&gt; {
+    let mut username_file = File::open("hello.txt")?;
+    let mut username = String::new();
+    username_file.read_to_string(&amp;mut username)?;
+    Ok(username)
+}
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-9-7">Listing 9-7</a>: Sebuah fungsi yang mengembalikan error ke kode pemanggil memakai operator <code>?</code></figcaption>
+</figure>
+<p><code>?</code> yang ditempatkan setelah nilai <code>Result</code> didefinisikan untuk bekerja hampir
+sama seperti ekspresi <code>match</code> yang kita buat untuk menangani nilai <code>Result</code> di
+Listing 9-6. Jika nilai <code>Result</code> adalah <code>Ok</code>, nilai di dalam <code>Ok</code> akan
+dikembalikan dari ekspresi ini, dan program pun berlanjut. Jika nilainya <code>Err</code>,
+maka <code>Err</code> akan dikembalikan dari seluruh fungsi seolah-olah kita memakai keyword
+<code>return</code>, sehingga nilai error tersebut tersebar ke kode pemanggil.</p>
+<p>Ada perbedaan antara apa yang dilakukan ekspresi <code>match</code> di Listing 9-6 dan apa
+yang dilakukan operator <code>?</code>: Nilai error yang dikenai operator <code>?</code> melewati
+fungsi <code>from</code>, yang didefinisikan dalam trait <code>From</code> di standard library dan
+dipakai untuk mengonversi nilai dari satu tipe ke tipe lain. Saat operator <code>?</code>
+memanggil fungsi <code>from</code>, tipe error yang diterima dikonversi menjadi tipe error
+yang didefinisikan dalam tipe kembalian fungsi saat ini. Ini berguna saat sebuah
+fungsi mengembalikan satu tipe error untuk mewakili semua cara fungsi itu bisa
+gagal, meskipun bagian-bagian tertentu bisa gagal karena banyak alasan berbeda.</p>
+<p>Misalnya, kita bisa mengubah fungsi <code>read_username_from_file</code> di Listing 9-7
+agar mengembalikan tipe error kustom bernama <code>OurError</code> yang kita definisikan.
+Jika kita juga mendefinisikan <code>impl From&lt;io::Error&gt; for OurError</code> untuk
+membangun sebuah instance <code>OurError</code> dari sebuah <code>io::Error</code>, maka pemanggilan
+operator <code>?</code> dalam tubuh <code>read_username_from_file</code> akan memanggil <code>from</code> dan
+mengonversi tipe-tipe error tanpa perlu menambah kode apa pun ke dalam fungsi.</p>
+<p>Dalam konteks Listing 9-7, <code>?</code> di akhir pemanggilan <code>File::open</code> akan
+mengembalikan nilai di dalam <code>Ok</code> ke variabel <code>username_file</code>. Jika terjadi
+error, operator <code>?</code> akan kembali lebih awal dari seluruh fungsi dan memberikan
+nilai <code>Err</code> apa pun ke kode pemanggil. Hal yang sama berlaku untuk <code>?</code> di akhir
+pemanggilan <code>read_to_string</code>.</p>
+<p>Operator <code>?</code> menghilangkan banyak boilerplate dan membuat implementasi fungsi ini
+lebih sederhana. Kita bahkan bisa mempersingkat kode ini lebih jauh dengan
+merangkai pemanggilan method tepat setelah <code>?</code>, seperti yang ditunjukkan Listing
+9-8.</p>
+<figure class="listing" id="listing-9-8">
+<span class="file-name">Filename: src/main.rs</span>
+<!-- Deliberately not using rustdoc_include here; the `main` function in the
+file panics. We do want to include it for reader experimentation purposes, but
+don't want to include it for rustdoc testing purposes. -->
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::fs::File;
+use std::io::{self, Read};
+
+fn read_username_from_file() -&gt; Result&lt;String, io::Error&gt; {
+    let mut username = String::new();
+
+    File::open("hello.txt")?.read_to_string(&amp;mut username)?;
+
+    Ok(username)
+}
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-9-8">Listing 9-8</a>: Merangkai pemanggilan method setelah operator <code>?</code></figcaption>
+</figure>
+<p>Kita memindahkan pembuatan <code>String</code> baru di <code>username</code> ke awal fungsi; bagian itu
+tidak berubah. Alih-alih membuat variabel <code>username_file</code>, kita merangkai
+pemanggilan <code>read_to_string</code> langsung ke hasil dari <code>File::open("hello.txt")?</code>.
+Kita tetap punya <code>?</code> di akhir pemanggilan <code>read_to_string</code>, dan kita tetap
+mengembalikan nilai <code>Ok</code> yang berisi <code>username</code> saat <code>File::open</code> dan
+<code>read_to_string</code> keduanya berhasil alih-alih mengembalikan error. Fungsionalitasnya
+sekali lagi sama seperti di Listing 9-6 dan Listing 9-7; ini hanya cara lain yang
+lebih ergonomis untuk menuliskannya.</p>
+<p>Listing 9-9 menunjukkan cara membuat ini bahkan lebih pendek dengan memakai
+<code>fs::read_to_string</code>.</p>
+<figure class="listing" id="listing-9-9">
+<span class="file-name">Filename: src/main.rs</span>
+<!-- Deliberately not using rustdoc_include here; the `main` function in the
+file panics. We do want to include it for reader experimentation purposes, but
+don't want to include it for rustdoc testing purposes. -->
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::fs;
+use std::io;
+
+fn read_username_from_file() -&gt; Result&lt;String, io::Error&gt; {
+    fs::read_to_string("hello.txt")
+}
+<span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-9-9">Listing 9-9</a>: Memakai <code>fs::read_to_string</code> alih-alih membuka lalu membaca file</figcaption>
+</figure>
+<p>Membaca sebuah file ke dalam string adalah operasi yang cukup umum, sehingga
+standard library menyediakan fungsi <code>fs::read_to_string</code> yang praktis, yang
+membuka file, membuat <code>String</code> baru, membaca isi file, memasukkan isinya ke
+dalam <code>String</code> itu, dan mengembalikannya. Tentu saja, memakai <code>fs::read_to_string</code>
+tidak memberi kita kesempatan untuk menjelaskan semua penanganan error, itulah
+sebabnya kita melakukannya dengan cara panjang terlebih dahulu.</p>
+<!-- Old headings. Do not remove or links may break. -->
+<p><a id="where-the--operator-can-be-used"></a></p>
+<h4 id="di-mana-operator--bisa-dipakai"><a class="header" href="#di-mana-operator--bisa-dipakai">Di Mana Operator <code>?</code> Bisa Dipakai</a></h4>
+<p>Operator <code>?</code> hanya bisa dipakai dalam fungsi yang tipe kembaliannya kompatibel
+dengan nilai yang dikenai <code>?</code>. Ini karena operator <code>?</code> didefinisikan untuk
+melakukan pengembalian awal sebuah nilai dari fungsi, dengan cara yang sama
+seperti ekspresi <code>match</code> yang kita buat di Listing 9-6. Di Listing 9-6, <code>match</code>
+memakai nilai <code>Result</code>, dan cabang pengembalian awalnya mengembalikan nilai
+<code>Err(e)</code>. Tipe kembalian fungsi haruslah sebuah <code>Result</code> agar kompatibel dengan
+<code>return</code> ini.</p>
+<p>Di Listing 9-10, mari kita lihat error yang akan kita dapatkan jika memakai
+operator <code>?</code> dalam fungsi <code>main</code> dengan tipe kembalian yang tidak kompatibel
+dengan tipe nilai yang kita kenai <code>?</code>.</p>
+<figure class="listing" id="listing-9-10">
+<span class="file-name">Filename: src/main.rs</span>
+<pre><code class="language-rust ignore does_not_compile">use std::fs::File;
+
+fn main() {
+    let greeting_file = File::open("hello.txt")?;
+}</code></pre>
+<figcaption><a href="#listing-9-10">Listing 9-10</a>: Mencoba memakai <code>?</code> dalam fungsi <code>main</code> yang mengembalikan <code>()</code> tidak akan terkompilasi.</figcaption>
+</figure>
+<p>Kode ini membuka sebuah file, yang bisa saja gagal. Operator <code>?</code> mengikuti nilai
+<code>Result</code> yang dikembalikan <code>File::open</code>, tetapi fungsi <code>main</code> ini punya tipe
+kembalian <code>()</code>, bukan <code>Result</code>. Saat kita mengompilasi kode ini, kita mendapat
+pesan error berikut:</p>
+<pre><code class="language-console">$ cargo run
+   Compiling error-handling v0.1.0 (file:///projects/error-handling)
+error[E0277]: the `?` operator can only be used in a function that returns `Result` or `Option` (or another type that implements `FromResidual`)
+ --&gt; src/main.rs:4:48
+  |
+3 | fn main() {
+  | --------- this function should return `Result` or `Option` to accept `?`
+4 |     let greeting_file = File::open("hello.txt")?;
+  |                                                ^ cannot use the `?` operator in a function that returns `()`
+  |
+help: consider adding return type
+  |
+3 ~ fn main() -&gt; Result&lt;(), Box&lt;dyn std::error::Error&gt;&gt; {
+4 |     let greeting_file = File::open("hello.txt")?;
+5 +     Ok(())
+  |
+
+For more information about this error, try `rustc --explain E0277`.
+error: could not compile `error-handling` (bin "error-handling") due to 1 previous error
+</code></pre>
+<p>Error ini menunjukkan bahwa kita hanya boleh memakai operator <code>?</code> dalam fungsi
+yang mengembalikan <code>Result</code>, <code>Option</code>, atau tipe lain yang mengimplementasikan
+<code>FromResidual</code>.</p>
+<p>Untuk memperbaiki error itu, kamu punya dua pilihan. Salah satu pilihannya adalah
+mengubah tipe kembalian fungsimu agar kompatibel dengan nilai yang kamu kenai
+operator <code>?</code>, selama tidak ada pembatasan yang melarangnya. Pilihan lainnya
+adalah memakai <code>match</code> atau salah satu method <code>Result&lt;T, E&gt;</code> untuk menangani
+<code>Result&lt;T, E&gt;</code> dengan cara yang sesuai.</p>
+<p>Pesan error itu juga menyebutkan bahwa <code>?</code> bisa dipakai dengan nilai <code>Option&lt;T&gt;</code>
+juga. Sama seperti memakai <code>?</code> pada <code>Result</code>, kamu hanya bisa memakai <code>?</code> pada
+<code>Option</code> dalam fungsi yang mengembalikan <code>Option</code>. Perilaku operator <code>?</code> saat
+dipakai pada <code>Option&lt;T&gt;</code> mirip dengan perilakunya saat dipakai pada <code>Result&lt;T, E&gt;</code>:
+Jika nilainya <code>None</code>, maka <code>None</code> akan dikembalikan lebih awal dari fungsi pada
+titik itu. Jika nilainya <code>Some</code>, nilai di dalam <code>Some</code> adalah nilai hasil dari
+ekspresi tersebut, dan fungsi pun berlanjut. Listing 9-11 punya contoh fungsi yang
+mencari karakter terakhir dari baris pertama dalam teks yang diberikan.</p>
+<figure class="listing" id="listing-9-11">
+<pre class="playground"><code class="language-rust edition2024">fn last_char_of_first_line(text: &amp;str) -&gt; Option&lt;char&gt; {
+    text.lines().next()?.chars().last()
+}
+<span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    assert_eq!(
+</span><span class="boring">        last_char_of_first_line("Hello, world\nHow are you today?"),
+</span><span class="boring">        Some('d')
+</span><span class="boring">    );
+</span><span class="boring">
+</span><span class="boring">    assert_eq!(last_char_of_first_line(""), None);
+</span><span class="boring">    assert_eq!(last_char_of_first_line("\nhi"), None);
+</span><span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-9-11">Listing 9-11</a>: Memakai operator <code>?</code> pada nilai <code>Option&lt;T&gt;</code></figcaption>
+</figure>
+<p>Fungsi ini mengembalikan <code>Option&lt;char&gt;</code> karena memungkinkan ada karakter di sana,
+tetapi juga memungkinkan tidak ada. Kode ini mengambil argumen string slice
+<code>text</code> dan memanggil method <code>lines</code> padanya, yang mengembalikan sebuah iterator
+atas baris-baris dalam string. Karena fungsi ini ingin memeriksa baris pertama,
+fungsi memanggil <code>next</code> pada iterator itu untuk mendapatkan nilai pertama darinya.
+Jika <code>text</code> adalah string kosong, pemanggilan <code>next</code> ini akan mengembalikan
+<code>None</code>, dan dalam hal itu kita memakai <code>?</code> untuk berhenti dan mengembalikan <code>None</code>
+dari <code>last_char_of_first_line</code>. Jika <code>text</code> bukan string kosong, <code>next</code> akan
+mengembalikan nilai <code>Some</code> yang berisi string slice dari baris pertama dalam
+<code>text</code>.</p>
+<p><code>?</code> mengekstrak string slice itu, dan kita bisa memanggil <code>chars</code> pada string
+slice tersebut untuk mendapatkan iterator atas karakter-karakterannya. Kita
+tertarik pada karakter terakhir di baris pertama ini, jadi kita memanggil <code>last</code>
+untuk mengembalikan item terakhir dalam iterator. Ini adalah <code>Option</code> karena
+memungkinkan baris pertama adalah string kosong; misalnya, jika <code>text</code> diawali
+dengan baris kosong tetapi punya karakter di baris lain, seperti <code>"\nhi"</code>.
+Namun, jika ada karakter terakhir di baris pertama, karakter itu akan
+dikembalikan dalam varian <code>Some</code>. Operator <code>?</code> di tengah memberi kita cara ringkas
+untuk menyatakan logika ini, memungkinkan kita mengimplementasikan fungsi dalam
+satu baris. Seandainya kita tidak bisa memakai operator <code>?</code> pada <code>Option</code>, kita
+harus mengimplementasikan logika ini dengan lebih banyak pemanggilan method atau
+sebuah ekspresi <code>match</code>.</p>
+<p>Perhatikan bahwa kamu bisa memakai operator <code>?</code> pada sebuah <code>Result</code> dalam fungsi
+yang mengembalikan <code>Result</code>, dan kamu bisa memakai operator <code>?</code> pada sebuah
+<code>Option</code> dalam fungsi yang mengembalikan <code>Option</code>, tetapi kamu tidak bisa
+mencampur-adukkannya. Operator <code>?</code> tidak akan otomatis mengonversi <code>Result</code> menjadi
+<code>Option</code> atau sebaliknya; dalam kasus seperti itu, kamu bisa memakai method
+seperti method <code>ok</code> pada <code>Result</code> atau method <code>ok_or</code> pada <code>Option</code> untuk melakukan
+konversi secara eksplisit.</p>
+<p>Sejauh ini, semua fungsi <code>main</code> yang kita pakai mengembalikan <code>()</code>. Fungsi <code>main</code>
+bersifat khusus karena merupakan titik masuk dan titik keluar dari sebuah program
+yang dapat dijalankan, dan ada batasan tentang apa yang boleh menjadi tipe
+kembaliannya agar program berperilaku seperti yang diharapkan.</p>
+<p>Untungnya, <code>main</code> juga bisa mengembalikan <code>Result&lt;(), E&gt;</code>. Listing 9-12 memuat kode
+dari Listing 9-10, tetapi kita sudah mengubah tipe kembalian <code>main</code> menjadi
+<code>Result&lt;(), Box&lt;dyn Error&gt;&gt;</code> dan menambahkan nilai kembalian <code>Ok(())</code> di akhir.
+Kode ini sekarang akan terkompilasi.</p>
+<figure class="listing" id="listing-9-12">
+<span class="file-name">Filename: src/main.rs</span>
+<pre><code class="language-rust ignore">use std::error::Error;
+use std::fs::File;
+
+fn main() -&gt; Result&lt;(), Box&lt;dyn Error&gt;&gt; {
+    let greeting_file = File::open("hello.txt")?;
+
+    Ok(())
+}</code></pre>
+<figcaption><a href="#listing-9-12">Listing 9-12</a>: Mengubah <code>main</code> agar mengembalikan <code>Result&lt;(), E&gt;</code> membolehkan pemakaian operator <code>?</code> pada nilai <code>Result</code>.</figcaption>
+</figure>
+<p>Tipe <code>Box&lt;dyn Error&gt;</code> adalah sebuah trait object, yang akan kita bahas dalam
+<a href="ch18-02-trait-objects.html#using-trait-objects-to-abstract-over-shared-behavior">“Memakai Trait Object untuk Abstraksi atas Perilaku Bersama”</a><!-- ignore -->
+di Bab 18. Untuk sementara, kamu bisa membaca <code>Box&lt;dyn Error&gt;</code> sebagai “jenis error
+apa pun.” Memakai <code>?</code> pada nilai <code>Result</code> dalam fungsi <code>main</code> dengan tipe error
+<code>Box&lt;dyn Error&gt;</code> dibolehkan karena tipe itu membolehkan nilai <code>Err</code> apa pun
+dikembalikan lebih awal. Meskipun tubuh fungsi <code>main</code> ini hanya akan pernah
+mengembalikan error bertipe <code>std::io::Error</code>, dengan menentukan <code>Box&lt;dyn Error&gt;</code>,
+tanda tangan ini akan tetap benar bahkan jika lebih banyak kode yang mengembalikan
+error lain ditambahkan ke tubuh <code>main</code>.</p>
+<p>Saat sebuah fungsi <code>main</code> mengembalikan <code>Result&lt;(), E&gt;</code>, program yang dapat
+dijalankan akan keluar dengan nilai <code>0</code> jika <code>main</code> mengembalikan <code>Ok(())</code> dan akan
+keluar dengan nilai bukan nol jika <code>main</code> mengembalikan nilai <code>Err</code>. Program yang
+dapat dijalankan yang ditulis dalam C mengembalikan bilangan bulat saat keluar:
+Program yang keluar dengan sukses mengembalikan bilangan bulat <code>0</code>, dan program
+yang mengalami error mengembalikan bilangan bulat selain <code>0</code>. Rust juga
+mengembalikan bilangan bulat dari program yang dapat dijalankan agar kompatibel
+dengan konvensi ini.</p>
+<p>Fungsi <code>main</code> boleh mengembalikan tipe apa pun yang mengimplementasikan <a href="../std/process/trait.Termination.html">trait
+<code>std::process::Termination</code></a><!-- ignore -->, yang memuat sebuah fungsi
+<code>report</code> yang mengembalikan <code>ExitCode</code>. Konsultasikan dokumentasi standard library
+untuk informasi lebih lanjut tentang mengimplementasikan trait <code>Termination</code> bagi
+tipe-tipe kamu sendiri.</p>
+<p>Sekarang setelah kita membahas detail tentang memanggil <code>panic!</code> atau
+mengembalikan <code>Result</code>, mari kita kembali ke topik tentang cara memutuskan mana
+yang tepat dipakai dalam kasus yang mana.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch09-01-unrecoverable-errors-with-panic.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="ch09-03-to-panic-or-not-to-panic.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch09-01-unrecoverable-errors-with-panic.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="ch09-03-to-panic-or-not-to-panic.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="ferris-2317480c.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

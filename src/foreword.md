@@ -1,0 +1,15 @@
+# Prakata
+
+Bahasa pemrograman Rust sudah menempuh jalan panjang dalam beberapa tahun saja—dari kelahirannya yang dirintis oleh segelintir penggiat awal, sampai menjadi salah satu bahasa pemrograman paling disukai dan paling diminati di dunia. Melihat ke belakang, wajar saja jika kekuatan dan janji Rust sampai menarik perhatian banyak orang dan mengukuhkan posisinya di pemrograman sistem. Yang tidak bisa dipastikan adalah pertumbuhan minat dan inovasi secara global yang menjalar lewat komunitas open source dan memicu adopsi luas di berbagai industri.
+
+Saat ini, mudah sekadar menunjuk pada fitur-fitur hebat yang ditawarkan Rust untuk menjelaskan ledakan minat dan adopsi ini. Siapa yang tidak menginginkan keamanan memori, *dan* kinerja cepat, *dan* compiler yang ramah, *dan* perkakas yang hebat, di antara segudang fitur luar biasa lainnya? Bahasa Rust yang kamu lihat hari ini memadukan bertahun-tahun riset di bidang pemrograman sistem dengan kebijaksanaan praktis dari komunitas yang hidup dan penuh semangat. Bahasa ini dirancang dengan tujuan jelas dan dikerjakan dengan penuh perhatian, sehingga para developer mendapat alat yang memudahkan mereka menulis kode yang aman, cepat, dan andal.
+
+Tetapi yang benar-benar membuat Rust istimewa adalah akarnya dalam memberdayakan kamu, sang pengguna, untuk mencapai tujuanmu. Ini adalah bahasa yang ingin kamu berhasil, dan prinsip pemberdayaan itu mengalir di inti komunitas yang membangun, merawat, dan memperjuangkan bahasa ini. Sejak edisi sebelumnya dari buku referensi definitif ini, Rust telah berkembang lebih jauh menjadi bahasa yang benar-benar global dan dipercaya. Proyek Rust kini didukung secara kokoh oleh Rust Foundation, yang juga berinvestasi dalam sejumlah inisiatif penting untuk memastikan Rust tetap aman, stabil, dan berkelanjutan.
+
+Edisi *The Rust Programming Language* ini adalah pembaruan menyeluruh yang mencerminkan perkembangan bahasa ini selama bertahun-tahun sekaligus menghadirkan informasi baru yang berharga. Tetapi buku ini bukan sekadar panduan sintaks dan library—melainkan undangan untuk bergabung dengan komunitas yang menjunjung kualitas, kinerja, dan desain yang matang. Baik kamu seorang developer berpengalaman yang ingin mencoba Rust untuk pertama kalinya, maupun Rustacean andal yang ingin mengasah kemampuan, edisi ini punya sesuatu untuk setiap orang.
+
+Perjalanan Rust adalah kisah kolaborasi, pembelajaran, dan iterasi. Pertumbuhan bahasa ini dan ekosistemnya adalah cerminan langsung dari komunitas yang hidup dan beragam di belakangnya. Kontribusi ribuan developer, mulai dari perancang inti bahasa hingga kontributor yang sesekali menyumbang, itulah yang membuat Rust menjadi alat yang begitu unik dan kuat. Dengan memegang buku ini, kamu tidak sekadar mempelajari bahasa pemrograman baru—kamu bergabung dengan sebuah gerakan untuk membuat perangkat lunak menjadi lebih baik, lebih aman, dan lebih menyenangkan untuk dikerjakan.
+
+Selamat datang di komunitas Rust!
+
+- Bec Rumbul, Direktur Eksekutif Rust Foundation

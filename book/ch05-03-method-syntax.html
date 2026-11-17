@@ -1,0 +1,470 @@
+<!DOCTYPE HTML>
+<html lang="id" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Method - Bahasa Pemrograman Rust</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-e96d0476.css">
+        <link rel="stylesheet" href="css/chrome-d279d366.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="ferris-d33b75bf.css">
+        <link rel="stylesheet" href="theme/2018-edition-4e126c62.css">
+        <link rel="stylesheet" href="theme/semantic-notes-9b5766c0.css">
+        <link rel="stylesheet" href="theme/listing-cab26221.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-d171f728.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-632b8c09.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Bahasa Pemrograman Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <p><a id="methods"></a></p>
+<h2 id="method"><a class="header" href="#method">Method</a></h2>
+<p>Method mirip dengan fungsi: kita mendeklarasikannya dengan keyword <code>fn</code> beserta sebuah nama, method bisa punya parameter dan nilai balikan, dan di dalamnya ada kode yang dijalankan ketika method dipanggil dari tempat lain. Bedanya, method didefinisikan di dalam konteks sebuah struct (atau enum atau trait object, yang bahas masing-masing di <a href="ch06-00-enums.html">Bab 6</a><!-- ignore --> dan <a href="ch18-02-trait-objects.html">Bab 18</a><!-- ignore -->), dan parameter pertamanya selalu <code>self</code>, yang merepresentasikan instance struct tempat method itu dipanggil.</p>
+<!-- Old headings. Do not remove or links may break. -->
+<p><a id="defining-methods"></a></p>
+<p><a id="method-syntax"></a></p>
+<h3 id="sintaks-method"><a class="header" href="#sintaks-method">Sintaks Method</a></h3>
+<p>Mari kita ubah fungsi <code>area</code> yang menerima sebuah instance <code>Rectangle</code> sebagai parameter, menjadi sebuah method <code>area</code> yang didefinisikan pada struct <code>Rectangle</code>, seperti pada Listing 5-13.</p>
+<figure class="listing" id="listing-5-13">
+<span class="file-name">Filename: src/main.rs</span>
+<pre class="playground"><code class="language-rust edition2024">#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+impl Rectangle {
+    fn area(&amp;self) -&gt; u32 {
+        self.width * self.height
+    }
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        rect1.area()
+    );
+}</code></pre>
+<figcaption><a href="#listing-5-13">Listing 5-13</a>: Mendefinisikan method <code>area</code> pada struct <code>Rectangle</code></figcaption>
+</figure>
+<p>Untuk mendefinisikan fungsi itu di dalam konteks <code>Rectangle</code>, kita mulai sebuah blok <code>impl</code> (implementation) untuk <code>Rectangle</code>. Semua isi blok <code>impl</code> ini akan diasosiasikan dengan tipe <code>Rectangle</code>. Lalu, kita pindahkan fungsi <code>area</code> ke dalam kurung kurawal <code>impl</code> dan mengubah parameter pertama (yang dalam kasus ini satu-satunya) menjadi <code>self</code> baik pada signature maupun di seluruh isi body. Di <code>main</code>, yang tadinya memanggil fungsi <code>area</code> dengan <code>rect1</code> sebagai argumen, kita bisa memakai <em>method syntax</em> untuk memanggil method <code>area</code> pada instance <code>Rectangle</code> kita. Method syntax diletakkan setelah sebuah instance: kita tambahkan titik, lalu nama method, tanda kurung, dan argumen apa pun.</p>
+<p>Pada signature <code>area</code>, kita memakai <code>&amp;self</code> alih-alih <code>rectangle: &amp;Rectangle</code>. <code>&amp;self</code> sebenarnya adalah bentuk singkat dari <code>self: &amp;Self</code>. Di dalam sebuah blok <code>impl</code>, tipe <code>Self</code> adalah alias untuk tipe yang menjadi isi blok <code>impl</code> tersebut. Method harus punya parameter bernama <code>self</code> bertipe <code>Self</code> sebagai parameter pertamanya, jadi Rust mengizinkan kamu menyingkatnya hanya dengan nama <code>self</code> di posisi parameter pertama. Perhatikan bahwa kita tetap perlu menulis <code>&amp;</code> di depan bentuk singkat <code>self</code> untuk menunjukkan bahwa method ini meminjam instance <code>Self</code>, persis seperti yang kita lakukan pada <code>rectangle: &amp;Rectangle</code>. Method bisa mengambil ownership atas <code>self</code>, meminjam <code>self</code> secara immutable seperti yang kita lakukan di sini, atau meminjam <code>self</code> secara mutable—sama seperti yang bisa dilakukan pada parameter lain.</p>
+<p>Kita memilih <code>&amp;self</code> di sini dengan alasan yang sama seperti kita memakai <code>&amp;Rectangle</code> pada versi fungsinya: kita tidak ingin mengambil ownership, dan kita hanya ingin membaca data di dalam struct, bukan menulisnya. Kalau kita ingin mengubah instance yang dipanggil method tersebut sebagai bagian dari kerja method-nya, kita akan memakai <code>&amp;mut self</code> sebagai parameter pertama. Method yang mengambil ownership atas instance dengan menulis <code>self</code> saja sebagai parameter pertama sangat jarang; teknik ini biasanya dipakai ketika method mengubah <code>self</code> menjadi sesuatu yang lain dan kamu ingin mencegah pemanggil memakai instance asli setelah transformasi itu.</p>
+<p>Alasan utama memakai method alih-alih fungsi, selain tersedianya method syntax dan tidak perlu mengulang tipe <code>self</code> di signature setiap method, adalah masalah organisasi. Kita menaruh semua hal yang bisa dilakukan pada sebuah instance tipe dalam satu blok <code>impl</code>, alih-alih membuat pengguna kode kita di masa depan mencari kemampuan <code>Rectangle</code> di berbagai tempat dalam library yang kita sediakan.</p>
+<p>Perhatikan bahwa kita boleh memberi sebuah method nama yang sama dengan salah satu field struct. Sebagai contoh, kita bisa mendefinisikan sebuah method pada <code>Rectangle</code> yang juga bernama <code>width</code>:</p>
+<figure class="listing">
+<span class="file-name">Filename: src/main.rs</span>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#[derive(Debug)]
+</span><span class="boring">struct Rectangle {
+</span><span class="boring">    width: u32,
+</span><span class="boring">    height: u32,
+</span><span class="boring">}
+</span><span class="boring">
+</span>impl Rectangle {
+    fn width(&amp;self) -&gt; bool {
+        self.width &gt; 0
+    }
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    if rect1.width() {
+        println!("The rectangle has a nonzero width; it is {}", rect1.width);
+    }
+}</code></pre>
+</figure>
+<p>Di sini, kita memilih membuat method <code>width</code> mengembalikan <code>true</code> jika nilai pada field <code>width</code> instance lebih besar dari <code>0</code>, dan <code>false</code> jika nilainya <code>0</code>: kita bisa memakai field di dalam method dengan nama yang sama untuk tujuan apa pun. Di <code>main</code>, ketika kita menulis <code>rect1.width</code> lalu diikuti tanda kurung, Rust tahu yang kita maksud adalah method <code>width</code>. Ketika tanpa tanda kurung, Rust tahu yang kita maksud adalah field <code>width</code>.</p>
+<p>Sering, tapi tidak selalu, ketika kita memberi sebuah method nama yang sama dengan sebuah field, kita ingin method itu hanya mengembalikan nilai di dalam field dan tidak melakukan apa pun lagi. Method seperti ini disebut <em>getter</em>, dan Rust tidak mengimplementasikannya secara otomatis untuk field struct seperti beberapa bahasa lain. Getter berguna karena kamu bisa membuat field itu private tetapi method-nya public, sehingga membuka akses baca-saja terhadap field tersebut sebagai bagian dari API publik tipe kita. Kita akan membahas apa itu public dan private serta cara menentukan sebuah field atau method sebagai public atau private di <a href="ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html#exposing-paths-with-the-pub-keyword">Bab 7</a><!-- ignore -->.</p>
+<p><a id="wheres-the---operator"></a></p>
+<section class="note" aria-role="note">
+<h3 id="di-mana-operator--"><a class="header" href="#di-mana-operator--">Di Mana Operator <code>-&gt;</code>?</a></h3>
+<p>Di C dan C++, ada dua operator berbeda untuk memanggil method: kamu memakai <code>.</code> jika memanggil method pada objek secara langsung, dan <code>-&gt;</code> jika memanggil method pada pointer ke objek dan perlu men-dereference pointer itu terlebih dahulu. Dengan kata lain, jika <code>object</code> adalah sebuah pointer, <code>object-&gt;something()</code> mirip dengan <code>(*object).something()</code>.</p>
+<p>Rust tidak punya padanan untuk operator <code>-&gt;</code>; sebagai gantinya, Rust punya fitur yang disebut <em>automatic referencing and dereferencing</em>. Memanggil method adalah salah satu dari sedikit tempat di Rust yang punya perilaku ini.</p>
+<p>Begini cara kerjanya: ketika kamu memanggil method dengan <code>object.something()</code>, Rust otomatis menambahkan <code>&amp;</code>, <code>&amp;mut</code>, atau <code>*</code> agar <code>object</code> cocok dengan signature method-nya. Dengan kata lain, dua baris berikut ini sama saja:</p>
+<!-- CAN'T EXTRACT SEE BUG https://github.com/rust-lang/mdBook/issues/1127 -->
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span><span class="boring">#[derive(Debug,Copy,Clone)]
+</span><span class="boring">struct Point {
+</span><span class="boring">    x: f64,
+</span><span class="boring">    y: f64,
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">impl Point {
+</span><span class="boring">   fn distance(&amp;self, other: &amp;Point) -&gt; f64 {
+</span><span class="boring">       let x_squared = f64::powi(other.x - self.x, 2);
+</span><span class="boring">       let y_squared = f64::powi(other.y - self.y, 2);
+</span><span class="boring">
+</span><span class="boring">       f64::sqrt(x_squared + y_squared)
+</span><span class="boring">   }
+</span><span class="boring">}
+</span><span class="boring">let p1 = Point { x: 0.0, y: 0.0 };
+</span><span class="boring">let p2 = Point { x: 5.0, y: 6.5 };
+</span>p1.distance(&amp;p2);
+(&amp;p1).distance(&amp;p2);
+<span class="boring">}</span></code></pre>
+<p>Baris pertama jauh lebih rapi. Perilaku automatic referencing ini bisa terjadi karena method punya receiver yang jelas, yaitu tipe <code>self</code>. Dengan receiver dan nama sebuah method, Rust bisa memastikan secara pasti apakah method itu membaca (<code>&amp;self</code>), mengubah (<code>&amp;mut self</code>), atau mengonsumsi (<code>self</code>). Fakta bahwa Rust membuat borrowing menjadi implisit bagi receiver method adalah bagian besar dari menjadikan ownership terasa ergonomis dalam praktik.</p>
+</section>
+<h3 id="method-dengan-lebih-banyak-parameter"><a class="header" href="#method-dengan-lebih-banyak-parameter">Method dengan Lebih Banyak Parameter</a></h3>
+<p>Mari berlatih memakai method dengan mengimplementasikan method kedua pada struct <code>Rectangle</code>. Kali ini kita ingin sebuah instance <code>Rectangle</code> menerima instance <code>Rectangle</code> lain dan mengembalikan <code>true</code> jika <code>Rectangle</code> kedua muat sepenuhnya di dalam <code>self</code> (yaitu <code>Rectangle</code> pertama); selainnya, method harus mengembalikan <code>false</code>. Artinya, setelah kita mendefinisikan method <code>can_hold</code>, kita harus bisa menulis program yang ditampilkan pada Listing 5-14.</p>
+<figure class="listing" id="listing-5-14">
+<span class="file-name">Filename: src/main.rs</span>
+<pre><code class="language-rust ignore">fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+    let rect2 = Rectangle {
+        width: 10,
+        height: 40,
+    };
+    let rect3 = Rectangle {
+        width: 60,
+        height: 45,
+    };
+
+    println!("Can rect1 hold rect2? {}", rect1.can_hold(&amp;rect2));
+    println!("Can rect1 hold rect3? {}", rect1.can_hold(&amp;rect3));
+}</code></pre>
+<figcaption><a href="#listing-5-14">Listing 5-14</a>: Memakai method <code>can_hold</code> yang belum ditulis</figcaption>
+</figure>
+<p>Keluaran yang diharapkan akan terlihat seperti berikut, karena kedua dimensi <code>rect2</code> lebih kecil daripada dimensi <code>rect1</code>, sedangkan <code>rect3</code> lebih lebar dari <code>rect1</code>:</p>
+<pre><code class="language-text">Can rect1 hold rect2? true
+Can rect1 hold rect3? false
+</code></pre>
+<p>Kita tahu kita ingin mendefinisikan sebuah method, jadi method itu akan berada di dalam blok <code>impl Rectangle</code>. Nama method-nya adalah <code>can_hold</code>, dan method itu menerima immutable borrow dari sebuah <code>Rectangle</code> lain sebagai parameter. Kita bisa mengetahui tipe parameter itu dengan melihat kode yang memanggil method: <code>rect1.can_hold(&amp;rect2)</code> mengoper <code>&amp;rect2</code>, yaitu immutable borrow ke <code>rect2</code>, sebuah instance <code>Rectangle</code>. Ini masuk akal karena kita hanya perlu membaca <code>rect2</code> (bukan menulis, yang berarti kita butuh mutable borrow), dan kita ingin <code>main</code> tetap memiliki ownership atas <code>rect2</code> agar bisa memakainya lagi setelah memanggil method <code>can_hold</code>. Nilai balikan <code>can_hold</code> berupa Boolean, dan implementasinya akan memeriksa apakah width dan height dari <code>self</code> lebih besar daripada width dan height dari <code>Rectangle</code> lainnya, masing-masing. Mari tambahkan method baru <code>can_hold</code> ke blok <code>impl</code> dari Listing 5-13, seperti ditampilkan pada Listing 5-15.</p>
+<figure class="listing" id="listing-5-15">
+<span class="file-name">Filename: src/main.rs</span>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#[derive(Debug)]
+</span><span class="boring">struct Rectangle {
+</span><span class="boring">    width: u32,
+</span><span class="boring">    height: u32,
+</span><span class="boring">}
+</span><span class="boring">
+</span>impl Rectangle {
+    fn area(&amp;self) -&gt; u32 {
+        self.width * self.height
+    }
+
+    fn can_hold(&amp;self, other: &amp;Rectangle) -&gt; bool {
+        self.width &gt; other.width &amp;&amp; self.height &gt; other.height
+    }
+}
+<span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    let rect1 = Rectangle {
+</span><span class="boring">        width: 30,
+</span><span class="boring">        height: 50,
+</span><span class="boring">    };
+</span><span class="boring">    let rect2 = Rectangle {
+</span><span class="boring">        width: 10,
+</span><span class="boring">        height: 40,
+</span><span class="boring">    };
+</span><span class="boring">    let rect3 = Rectangle {
+</span><span class="boring">        width: 60,
+</span><span class="boring">        height: 45,
+</span><span class="boring">    };
+</span><span class="boring">
+</span><span class="boring">    println!("Can rect1 hold rect2? {}", rect1.can_hold(&amp;rect2));
+</span><span class="boring">    println!("Can rect1 hold rect3? {}", rect1.can_hold(&amp;rect3));
+</span><span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-5-15">Listing 5-15</a>: Mengimplementasikan method <code>can_hold</code> pada <code>Rectangle</code> yang menerima sebuah instance <code>Rectangle</code> lain sebagai parameter</figcaption>
+</figure>
+<p>Ketika kita menjalankan kode ini bersama fungsi <code>main</code> pada Listing 5-14, kita akan mendapat keluaran yang kita inginkan. Method bisa menerima beberapa parameter yang kita tambahkan pada signature setelah parameter <code>self</code>, dan parameter-parameter itu bekerja sama seperti parameter pada fungsi.</p>
+<h3 id="fungsi-terkait"><a class="header" href="#fungsi-terkait">Fungsi Terkait</a></h3>
+<p>Semua fungsi yang didefinisikan di dalam sebuah blok <code>impl</code> disebut <em>fungsi terkait</em> (<em>associated functions</em>) karena diasosiasikan dengan tipe yang dinamai oleh <code>impl</code> tersebut. Kita bisa mendefinisikan fungsi terkait yang tidak punya <code>self</code> sebagai parameter pertama (dan karena itu bukan method) karena mereka tidak butuh instance tipe untuk bekerja. Kita sudah pernah memakai satu fungsi seperti ini: fungsi <code>String::from</code> yang didefinisikan pada tipe <code>String</code>.</p>
+<p>Fungsi terkait yang bukan method sering dipakai sebagai konstruktor yang mengembalikan instance baru dari struct. Konstruktor ini sering diberi nama <code>new</code>, tapi <code>new</code> bukan nama khusus dan tidak bawaan bahasa. Sebagai contoh, kita bisa memilih menyediakan fungsi terkait bernama <code>square</code> yang menerima satu parameter dimensi dan memakainya baik sebagai width maupun height, sehingga lebih mudah membuat sebuah <code>Rectangle</code> persegi tanpa harus menyebut nilai yang sama dua kali:</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#[derive(Debug)]
+</span><span class="boring">struct Rectangle {
+</span><span class="boring">    width: u32,
+</span><span class="boring">    height: u32,
+</span><span class="boring">}
+</span><span class="boring">
+</span>impl Rectangle {
+    fn square(size: u32) -&gt; Self {
+        Self {
+            width: size,
+            height: size,
+        }
+    }
+}
+<span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    let sq = Rectangle::square(3);
+</span><span class="boring">}</span></code></pre>
+<p>Keyword <code>Self</code> pada tipe balikan dan di dalam isi fungsi adalah alias untuk tipe yang muncul setelah keyword <code>impl</code>, yaitu <code>Rectangle</code> dalam kasus ini.</p>
+<p>Untuk memanggil fungsi terkait ini, kita memakai sintaks <code>::</code> bersama nama struct; <code>let sq = Rectangle::square(3);</code> adalah sebuah contoh. Fungsi ini berada dalam namespace milik struct: sintaks <code>::</code> dipakai baik untuk fungsi terkait maupun namespace yang dibuat oleh module. Kita akan membahas module di <a href="ch07-02-defining-modules-to-control-scope-and-privacy.html">Bab 7</a><!-- ignore -->.</p>
+<h3 id="beberapa-blok-impl"><a class="header" href="#beberapa-blok-impl">Beberapa Blok <code>impl</code></a></h3>
+<p>Setiap struct boleh punya lebih dari satu blok <code>impl</code>. Sebagai contoh, Listing 5-15 setara dengan kode pada Listing 5-16, yang menaruh tiap method di blok <code>impl</code>-nya sendiri.</p>
+<figure class="listing" id="listing-5-16">
+<pre class="playground"><code class="language-rust edition2024"><span class="boring">#[derive(Debug)]
+</span><span class="boring">struct Rectangle {
+</span><span class="boring">    width: u32,
+</span><span class="boring">    height: u32,
+</span><span class="boring">}
+</span><span class="boring">
+</span>impl Rectangle {
+    fn area(&amp;self) -&gt; u32 {
+        self.width * self.height
+    }
+}
+
+impl Rectangle {
+    fn can_hold(&amp;self, other: &amp;Rectangle) -&gt; bool {
+        self.width &gt; other.width &amp;&amp; self.height &gt; other.height
+    }
+}
+<span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    let rect1 = Rectangle {
+</span><span class="boring">        width: 30,
+</span><span class="boring">        height: 50,
+</span><span class="boring">    };
+</span><span class="boring">    let rect2 = Rectangle {
+</span><span class="boring">        width: 10,
+</span><span class="boring">        height: 40,
+</span><span class="boring">    };
+</span><span class="boring">    let rect3 = Rectangle {
+</span><span class="boring">        width: 60,
+</span><span class="boring">        height: 45,
+</span><span class="boring">    };
+</span><span class="boring">
+</span><span class="boring">    println!("Can rect1 hold rect2? {}", rect1.can_hold(&amp;rect2));
+</span><span class="boring">    println!("Can rect1 hold rect3? {}", rect1.can_hold(&amp;rect3));
+</span><span class="boring">}</span></code></pre>
+<figcaption><a href="#listing-5-16">Listing 5-16</a>: Menulis ulang Listing 5-15 dengan beberapa blok <code>impl</code></figcaption>
+</figure>
+<p>Tidak ada alasan untuk memisahkan method-method ini ke beberapa blok <code>impl</code> di sini, tapi ini tetap sintaks yang valid. Kita akan melihat kasus di mana beberapa blok <code>impl</code> berguna pada Bab 10, ketika kita membahas tipe generic dan trait.</p>
+<h2 id="ringkasan"><a class="header" href="#ringkasan">Ringkasan</a></h2>
+<p>Struct memungkinkan kamu membuat tipe kustom yang bermakna bagi domain kamu. Dengan memakai struct, kamu bisa menjaga bagian-bagian data yang saling terhubung tetap terhubung dan menamai tiap bagian agar kode kamu jelas. Di dalam blok <code>impl</code>, kamu bisa mendefinisikan fungsi yang diasosiasikan dengan tipe kamu, dan method adalah sejenis fungsi terkait yang memungkinkan kamu menentukan perilaku yang dimiliki oleh instance struct kamu.</p>
+<p>Tapi struct bukan satu-satunya cara membuat tipe kustom: mari beralih ke fitur enum di Rust untuk menambahkan satu lagi ke kotak perkakasmu.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch05-02-example-structs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="ch06-00-enums.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch05-02-example-structs.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="ch06-00-enums.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="ferris-2317480c.js"></script>
+
+
+
+    </div>
+    </body>
+</html>
